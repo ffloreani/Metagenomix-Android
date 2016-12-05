@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Metagenomix</string>
+    <string name="start">Start</string>
+    <string name="stop">Stop</string>
+    <string name="n_a">N/A</string>
+    <string name="generated">Generated:</string>
+</resources>
