@@ -3,5 +3,10 @@
     <string name="start">Start</string>
     <string name="stop">Stop</string>
     <string name="n_a">N/A</string>
-    <string name="generated">Generated:</string>
+    <string name="status">Status:</string>
+    <string name="ready_status">Standing by, start conversion when ready…</string>
+    <string name="converting_status">Converting…</string>
+    <string name="saved_ready_status">Saved changes, ready for processing</string>
+    <string name="converting">Converting sample…</string>
+    <string name="converted">Input processed, ready to begin analysis!</string>
 </resources>
