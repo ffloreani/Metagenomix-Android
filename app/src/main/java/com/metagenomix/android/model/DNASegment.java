@@ -41,7 +41,13 @@ public class DNASegment {
         this.segment = segment;
     }
 
+    public boolean wasQueued() {
+        return wasQueued;
+    }
 
+    public void setQueued() {
+        wasQueued = true;
+    }
 
     @Override
     public boolean equals(Object o) {

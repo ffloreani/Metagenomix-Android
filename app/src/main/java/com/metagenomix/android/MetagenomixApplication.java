@@ -2,6 +2,10 @@ package com.metagenomix.android;
 
 import android.app.Application;
 import android.content.Context;
+import android.util.Log;
+
+import com.metagenomix.android.model.DNASegment;
+import com.metagenomix.android.model.DNASequence;
 
 import java.util.concurrent.LinkedBlockingQueue;
 
@@ -12,7 +16,7 @@ import java.util.concurrent.LinkedBlockingQueue;
 public class MetagenomixApplication extends Application {
 
     private static Context context;
-    private static LinkedBlockingQueue<String> segmentQueue;
+    private static LinkedBlockingQueue<DNASegment> segmentQueue;
 
     @Override
     public void onCreate() {
@@ -31,7 +35,14 @@ public class MetagenomixApplication extends Application {
      *
      * @return Queue of segments that are to be processed
      */
-    public static LinkedBlockingQueue<String> getSegmentQueue() {
+    public static LinkedBlockingQueue<DNASegment> getSegmentQueue() {
         return segmentQueue;
+    }
+
+    public static void logSegmentQueue() {
+        for (DNASegment segment: segmentQueue) {
+            Log.d("SegmentQueue", segment.getSequenceID() +  ", " + segment.getSegment());
+        }
+        Log.d("SegmentQueue", "Finished logging segments");
     }
 }

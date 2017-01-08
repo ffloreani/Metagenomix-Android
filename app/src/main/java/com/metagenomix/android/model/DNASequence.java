@@ -11,6 +11,7 @@ public class DNASequence {
     private String giCode;
     private String organismName;
     private SparseArray<DNASegment> segments;
+    private int processed = 0;
 
     public DNASequence() {
         giCode = "";
@@ -48,6 +49,18 @@ public class DNASequence {
         this.giCode = giCode;
     }
 
+    public int getProcessed() {
+        return processed;
+    }
+
+    public void setProcessed(int processed) {
+        this.processed = processed;
+    }
+
+    public boolean isProcessed() {
+        return processed == segments.size();
+    }
+
     public void parseFASTAHeader(String sequenceHeader) {
         int giStartIndex = sequenceHeader.indexOf('|') + 1;
         int giEndIndex = sequenceHeader.indexOf('|', giStartIndex);
@@ -55,5 +68,9 @@ public class DNASequence {
 
         int organismNameStartIndex = sequenceHeader.lastIndexOf('|') + 1;
         organismName = sequenceHeader.substring(organismNameStartIndex);
+    }
+
+    public void incrementProcessed() {
+        processed++;
     }
 }

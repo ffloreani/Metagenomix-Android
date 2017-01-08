@@ -1,6 +1,7 @@
 package com.metagenomix.android.processing;
 
 import android.support.annotation.NonNull;
+import android.util.Log;
 import android.util.SparseArray;
 
 import com.metagenomix.android.MetagenomixApplication;
@@ -23,6 +24,7 @@ import java.util.Vector;
 public abstract class SequenceConverter {
     private static int sampleID;
     private static List<DNASequence> sequenceList = new Vector<>();
+    private static int segmentsConverted = 0;
 
     static {
         sampleID = MetagenomixApplication.getAppContext().getResources()
@@ -32,6 +34,10 @@ public abstract class SequenceConverter {
     @NonNull
     public static List<DNASequence> getSequenceList() {
         return sequenceList;
+    }
+
+    public static int getSegmentsConverted() {
+        return segmentsConverted;
     }
 
     /**
@@ -65,6 +71,19 @@ public abstract class SequenceConverter {
         return true;
     }
 
+    public static void logSequenceList() {
+//        if (!sequenceList.isEmpty()) {
+//            for (DNASequence sequence : sequenceList) {
+//                Log.d("Sequence name", sequence.getOrganismName());
+//                SparseArray<DNASegment> segments = sequence.getSegments();
+//                for (int i = 0; i < segments.size(); i++) {
+//                    Log.d("Segment " + i, segments.valueAt(i).getSegment());
+//                }
+//            }
+//        }
+        Log.d("Segments converted", Integer.toString(segmentsConverted));
+    }
+
     /**
      * Generates a single {@linkplain DNASequence} based on the given file reader
      * and read string parameters, stores the created sequence in a local list.
@@ -88,6 +107,7 @@ public abstract class SequenceConverter {
         while ((line = reader.readLine()) != null) {
             if (line.contains(">")) break;
             DNASegment segment = new DNASegment(sequence.getGiCode(), line);
+            segmentsConverted++;
             segmentsMap.append(segment.hashCode(), segment);
         }
         sequence.setSegments(segmentsMap);
