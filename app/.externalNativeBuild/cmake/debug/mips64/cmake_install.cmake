@@ -1,4 +1,4 @@
-# Install script for directory: /Users/filipfloreani/Development/Android/Metagenomix/app
+# Install script for directory: /Users/filipfloreani/Development/Android/Metagenomix/app/src/main/cpp
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

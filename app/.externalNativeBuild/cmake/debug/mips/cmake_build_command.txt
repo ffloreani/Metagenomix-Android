@@ -1,6 +1,6 @@
 Executable : /Users/filipfloreani/Library/Android/sdk/cmake/3.6.3155560/bin/cmake
 arguments : 
--H/Users/filipfloreani/Development/Android/Metagenomix/app
+-H/Users/filipfloreani/Development/Android/Metagenomix/app/src/main/cpp
 -B/Users/filipfloreani/Development/Android/Metagenomix/app/.externalNativeBuild/cmake/debug/mips
 -GAndroid Gradle - Ninja
 -DANDROID_ABI=mips

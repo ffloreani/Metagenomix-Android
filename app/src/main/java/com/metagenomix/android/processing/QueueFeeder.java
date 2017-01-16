@@ -6,6 +6,7 @@ import android.os.Message;
 import android.util.Log;
 
 import com.metagenomix.android.MetagenomixApplication;
+import com.metagenomix.android.activities.HomeActivity;
 import com.metagenomix.android.model.DNASegment;
 import com.metagenomix.android.model.DNASequence;
 import com.metagenomix.android.util.MetagenomixUtil;
@@ -50,7 +51,7 @@ public class QueueFeeder implements Runnable {
             if (dnaSequence.isProcessed()) sequenceList.remove(dnaSequence);
 
             sendProcessedMessage(processed);
-            Log.d("SegmentQueue", "Left to process: " + (SEGMENTS_TO_PROCESS - processed));
+            if (HomeActivity.DEBUG_FLAG) Log.d("SegmentQueue", "Left to process: " + (SEGMENTS_TO_PROCESS - processed));
             /* SLEEP */
             try {
                 long randomSleepTime = MetagenomixUtil.getRandomLongWithLimit(3 * 1000);
