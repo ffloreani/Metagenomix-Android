@@ -49,14 +49,14 @@
 // Prerequisites
 // ============================================================================
 
-#include <seqan/basic.h>
-#include <seqan/modifier.h>  // ModifiedAlphabet<>.
-#include <seqan/align/align_metafunctions.h>
-#include <seqan/graph_align.h>  // TODO(holtgrew): We should not have to depend on this.
+#include <src/main/cpp/graphmap/libs/seqan-2.0.1/seqan/basic.h>
+#include <src/main/cpp/graphmap/libs/seqan-2.0.1/seqan/modifier.h>  // ModifiedAlphabet<>.
+#include <src/main/cpp/graphmap/libs/seqan-2.0.1/seqan/align/align_metafunctions.h>
+#include <src/main/cpp/graphmap/libs/seqan-2.0.1/seqan/graph_align.h>  // TODO(holtgrew): We should not have to depend on this.
 
 // TODO(holtgrew): Why not use priority queue from STL?
-#include <seqan/misc/priority_type_base.h>
-#include <seqan/misc/priority_type_heap.h>
+#include <src/main/cpp/graphmap/libs/seqan-2.0.1/seqan/misc/priority_type_base.h>
+#include <src/main/cpp/graphmap/libs/seqan-2.0.1/seqan/misc/priority_type_heap.h>
 
 // ============================================================================
 // Support

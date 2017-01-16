@@ -1,4 +1,4 @@
-package com.metagenomix.android.activities;
+package com.metagenomix.android.processing;
 
 import java.util.ArrayList;
 import java.util.Collections;

@@ -9,7 +9,7 @@
 
 #include "argparser.h"
 #include <algorithm>
-#include <wordexp.h>
+//#include <wordexp.h>
 
 ArgumentParser::ArgumentParser() {
 //  AddArgument(NULL, VALUE_TYPE_NONE, "h", "help", "", "Displays this list of commands.", 0, "Help");
@@ -202,10 +202,10 @@ void ArgumentParser::ProcessArguments(int argc, char* argv[], int offset) {
                 fprintf (stderr, "ERROR: Composite parameter '%s' not defined. Exiting.\n", arguments_[argument_index].value.c_str());
                 exit(1);
               }
-              wordexp_t p;
-              wordexp(it_arg->second.c_str(), &p, 0);
-              ProcessArguments((int32_t) p.we_wordc, (char **) p.we_wordv, 0);
-              wordfree(&p);
+//              wordexp_t p;
+//              wordexp(it_arg->second.c_str(), &p, 0);
+//              ProcessArguments((int32_t) p.we_wordc, (char **) p.we_wordv, 0);
+//              wordfree(&p);
             }
 
           } else if (arguments_[argument_index].value_type == VALUE_TYPE_BOOL) {
@@ -261,7 +261,7 @@ std::string ArgumentParser::VerboseUsage() {
     max_arg_len = std::max(max_arg_len, (int32_t) arguments_[i].arg_long.length());
   }
 
-  std::map<std::string, std::vector<int32_t>>::iterator it;
+  std::map<std::string, std::vector<int32_t> >::iterator it;
   const int32_t short_name_starting_char = 4;
   const int32_t value_type_starting_char = short_name_starting_char + 6 + max_arg_len + 1;
   const int32_t description_starting_char = value_type_starting_char + 3 + 3; /// 3 is the length of the type name, and 3 is the spacing between the type name and the description.

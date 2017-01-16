@@ -1,4 +1,4 @@
-package com.metagenomix.android.activities;
+package com.metagenomix.android.model;
 
 import java.io.Serializable;
 import java.util.Map;

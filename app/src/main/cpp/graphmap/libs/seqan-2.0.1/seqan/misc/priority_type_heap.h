@@ -216,7 +216,7 @@ SEQAN_CHECKPOINT
 
 template <typename TValue, typename TLess>
 inline void
-adjustTop (PriorityType<TValue, TLess, PriorityHeap> & me)    // so könnte man es dann auch nennen
+adjustTop (PriorityType<TValue, TLess, PriorityHeap> & me)    // so kï¿½nnte man es dann auch nennen
 {
 SEQAN_CHECKPOINT
     if (!empty(me.heap))
@@ -314,7 +314,7 @@ _adjustHeapTowardLeaves(
     PriorityType<TValue, TLess, PriorityHeap> & me,
     TValue element,
     TSize h,
-    TSize i ) //für mich: h=0, i=1
+    TSize i ) //fï¿½r mich: h=0, i=1
 {
 SEQAN_CHECKPOINT
     // root index is zero

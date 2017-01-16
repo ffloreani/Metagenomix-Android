@@ -138,7 +138,7 @@ class ArgumentParser {
   std::map<std::string, int32_t> valid_args_all_;
   std::map<std::string, int32_t> valid_args_short_;
   std::map<std::string, int32_t> valid_args_long_;
-  std::map<std::string, std::vector<int32_t>> valid_args_group_;
+  std::map<std::string, std::vector<int32_t> > valid_args_group_;
   std::map<int32_t, int32_t> valid_args_positional_;
   std::vector<std::string> arg_groups_in_order_of_appearance_;
   std::vector<Argument> arguments_;

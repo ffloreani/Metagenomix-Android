@@ -31,7 +31,7 @@ CMAKE_AR:FILEPATH=/Users/filipfloreani/Library/Android/sdk/ndk-bundle/toolchains
 CMAKE_BUILD_TYPE:STRING=Debug
 
 //Flags used by the compiler during all build types.
-CMAKE_CXX_FLAGS:STRING=
+CMAKE_CXX_FLAGS:STRING=-std=c++11 -frtti -fexceptions
 
 //Flags used by the compiler during debug builds.
 CMAKE_CXX_FLAGS_DEBUG:STRING=
@@ -177,14 +177,17 @@ CMAKE_TOOLCHAIN_FILE:FILEPATH=/Users/filipfloreani/Library/Android/sdk/ndk-bundl
 // Studio IDE projects all commands are done without /nologo.
 CMAKE_VERBOSE_MAKEFILE:BOOL=FALSE
 
+//C++ compiler flags for OpenMP parallization
+OpenMP_CXX_FLAGS:STRING=
+
+//C compiler flags for OpenMP parallization
+OpenMP_C_FLAGS:STRING=
+
 //Value Computed by CMake
 Project_BINARY_DIR:STATIC=/Users/filipfloreani/Development/Android/Metagenomix/app/.externalNativeBuild/cmake/debug/armeabi
 
 //Value Computed by CMake
 Project_SOURCE_DIR:STATIC=/Users/filipfloreani/Development/Android/Metagenomix/app/src/main/cpp
-
-//Dependencies for the target
-graphmap_lib_LIB_DEPENDS:STATIC=general;/Users/filipfloreani/Library/Android/sdk/ndk-bundle/platforms/android-21/arch-arm/usr/lib/liblog.so;
 
 //Path to a library.
 log-lib:FILEPATH=/Users/filipfloreani/Library/Android/sdk/ndk-bundle/platforms/android-21/arch-arm/usr/lib/liblog.so
@@ -313,4 +316,10 @@ CMAKE_STRIP-ADVANCED:INTERNAL=1
 CMAKE_UNAME:INTERNAL=/usr/bin/uname
 //ADVANCED property for variable: CMAKE_VERBOSE_MAKEFILE
 CMAKE_VERBOSE_MAKEFILE-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: OpenMP_CXX_FLAGS
+OpenMP_CXX_FLAGS-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: OpenMP_C_FLAGS
+OpenMP_C_FLAGS-ADVANCED:INTERNAL=1
+//Test OpenMP_FLAG_DETECTED
+OpenMP_FLAG_DETECTED:INTERNAL=
 

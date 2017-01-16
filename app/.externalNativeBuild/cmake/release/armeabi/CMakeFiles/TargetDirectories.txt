@@ -1,3 +1,2 @@
 /Users/filipfloreani/Development/Android/Metagenomix/app/.externalNativeBuild/cmake/release/armeabi/CMakeFiles/edit_cache.dir
 /Users/filipfloreani/Development/Android/Metagenomix/app/.externalNativeBuild/cmake/release/armeabi/CMakeFiles/rebuild_cache.dir
-/Users/filipfloreani/Development/Android/Metagenomix/app/.externalNativeBuild/cmake/release/armeabi/CMakeFiles/graphmap_lib.dir

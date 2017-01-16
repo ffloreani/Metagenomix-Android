@@ -4,24 +4,15 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
-import android.widget.Toast;
 
 import com.metagenomix.android.R;
 
 import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
-import java.util.ArrayList;
-import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -32,13 +23,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void loadData(View view) {
-        Intent intent = new Intent(this, LoadData.class);
+        Intent intent = new Intent(this, LoadDataActivity.class);
         writeGraphOutputTest();
         startActivity(intent);
     }
 
     public void showHistory(View view) {
-        Intent intent = new Intent(this, History.class);
+        Intent intent = new Intent(this, HistoryActivity.class);
         startActivity(intent);
     }
 

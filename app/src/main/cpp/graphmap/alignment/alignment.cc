@@ -7,7 +7,7 @@
 
 #include <vector>
 #include "alignment.h"
-#include "libs/opal.h"
+#include "../libs/opal.h"
 
 int AlignRegion(const SingleSequence *read, const Index *index, const ProgramParameters *parameters, const EValueParams *evalue_params, bool extend_to_end, PathGraphEntry *region_results) {
 //  bool align_end_to_end = true;

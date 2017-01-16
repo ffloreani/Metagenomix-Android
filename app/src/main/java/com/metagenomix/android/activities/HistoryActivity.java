@@ -1,22 +1,22 @@
 package com.metagenomix.android.activities;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.metagenomix.android.R;
-import com.metagenomix.android.activities.DatabaseManager;
+import com.metagenomix.android.model.Record;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
-public class History extends AppCompatActivity {
+public class HistoryActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,7 +41,7 @@ public class History extends AppCompatActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Intent intent = new Intent(getApplicationContext(), Graph.class);
+                Intent intent = new Intent(getApplicationContext(), GraphActivity.class);
                 String selectedFromList =(String) (listView.getItemAtPosition(i));
                 Record record = historyMap.get(selectedFromList);
                 intent.putExtra("data", record);

@@ -1,18 +1,13 @@
 package com.metagenomix.android.activities;
 
-import android.app.ActionBar;
 import android.app.ProgressDialog;
 import android.content.Context;
-import android.content.Intent;
 import android.graphics.Color;
-import android.os.AsyncTask;
+import android.os.Bundle;
 import android.os.FileObserver;
 import android.os.Handler;
-import android.support.v4.app.NavUtils;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.util.Log;
-import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.github.mikephil.charting.charts.PieChart;
@@ -21,25 +16,23 @@ import com.github.mikephil.charting.data.PieData;
 import com.github.mikephil.charting.data.PieDataSet;
 import com.github.mikephil.charting.data.PieEntry;
 import com.metagenomix.android.R;
+import com.metagenomix.android.model.Record;
+import com.metagenomix.android.util.RecursiveFileObserver;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
-import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class LoadData extends AppCompatActivity {
+public class LoadDataActivity extends AppCompatActivity {
 
     PieChart pieChart;
     Map<String, Float> map = new HashMap<>();

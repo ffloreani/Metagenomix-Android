@@ -1,4 +1,4 @@
-package com.metagenomix.android.activities;
+package com.metagenomix.android.util;
 
 import android.os.FileObserver;
 
