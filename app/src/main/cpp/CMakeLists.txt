@@ -57,69 +57,65 @@ cmake_minimum_required(VERSION 3.4.1)
 #            "graphmap/utility/utility_general.cc"
 #)
 
-add_definitions("-fopenmp")
-find_package(OpenMP)
-IF(OPENMP_FOUND)
-    set (CMAKE_C_FLAGS "${CMAKE_C_FLAGS} ${OpenMP_C_FLAGS}")
-    set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${OpenMP_CXX_FLAGS}")
-ENDIF(OPENMP_FOUND)
+set(LINKER_FLAGS "${LINKER_FLAGS} -Wl,--as-needed -Wl,--gc-sections -Wl,--no-undefined -Wl,--strip-all -Wl,-rpath-link=${ANDROID_NDK_SYSROOT}/usr/lib/ -L${ANDROID_NDK_SYSROOT}/usr/lib/")
 
-#include_directories("/algorithm"
-#                    "/alignment"
-#                    "/argumentparser"
-#                    "/containers"
-#                    "/index"
-#                    "/libs"
-#                    "/libs/seqan"
-#                    "/libs/seqan/align"
-#                    "/libs/seqan/align_extend"
-#                    "/libs/seqan/align_profile"
-#                    "/libs/seqan/align_split"
-#                    "/libs/seqan/alignment_free"
-#                    "/libs/seqan/arg_parse"
-#                    "/libs/seqan/bam_io"
-#                    "/libs/seqan/basic"
-#                    "/libs/seqan/bed_io"
-#                    "/libs/seqan/consensus"
-#                    "/libs/seqan/file"
-#                    "/libs/seqan/find"
-#                    "/libs/seqan/gff_io"
-#                    "/libs/seqan/graph_algorithms"
-#                    "/libs/seqan/graph_align"
-#                    "/libs/seqan/graph_msa"
-#                    "/libs/seqan/graph_types"
-#                    "/libs/seqan/index"
-#                    "/libs/seqan/journaled_set"
-#                    "/libs/seqan/map"
-#                    "/libs/seqan/math"
-#                    "/libs/seqan/misc"
-#                    "/libs/seqan/modifier"
-#                    "/libs/seqan/parallel"
-#                    "/libs/seqan/parse_im"
-#                    "/libs/seqan/pipe"
-#                    "/libs/seqan/platform"
-#                    "/libs/seqan/random"
-#                    "/libs/seqan/realign"
-#                    "/libs/seqan/reduced_aminoacid"
-#                    "/libs/seqan/roi_io"
-#                    "/libs/seqan/score"
-#                    "/libs/seqan/seeds"
-#                    "/libs/seqan/seq_io"
-#                    "/libs/seqan/sequence"
-#                    "/libs/seqan/sequence_journaled"
-#                    "/libs/seqan/simple_intervals_io"
-#                    "/libs/seqan/statistics"
-#                    "/libs/seqan/store"
-#                    "/libs/seqan/stream"
-#                    "/libs/seqan/system"
-#                    "/libs/seqan/translation"
-#                    "/libs/seqan/ucsc_io"
-#                    "/libs/seqan/vcf_io"
-#                    "/log_system"
-#                    "/owler"
-#                    "/sequences"
-#                    "/sparsehash"
-#                    "/utility"
+#include_directories(src/main/cpp/graphmap/algorithm
+#                    src/main/cpp/graphmap/alignment
+#                    src/main/cpp/graphmap/argumentparser
+#                    src/main/cpp/graphmap/containers
+#                    src/main/cpp/graphmap/index
+#                    src/main/cpp/graphmap/libs
+#                    src/main/cpp/graphmap/libs/libduvsufsort-2.0.1-64bit
+#                    src/main/cpp/graphmap/libs/seqan-2.0.1/seqan
+#                    src/main/cpp/graphmap/libs/seqan-2.0.1/seqan/align
+#                    src/main/cpp/graphmap/libs/seqan-2.0.1/seqan/align_extend
+#                    src/main/cpp/graphmap/libs/seqan-2.0.1/seqan/align_profile
+#                    src/main/cpp/graphmap/libs/seqan-2.0.1/seqan/align_split
+#                    src/main/cpp/graphmap/libs/seqan-2.0.1/seqan/alignment_free
+#                    src/main/cpp/graphmap/libs/seqan-2.0.1/seqan/arg_parse
+#                    src/main/cpp/graphmap/libs/seqan-2.0.1/seqan/bam_io
+#                    src/main/cpp/graphmap/libs/seqan-2.0.1/seqan/basic
+#                    src/main/cpp/graphmap/libs/seqan-2.0.1/seqan/bed_io
+#                    src/main/cpp/graphmap/libs/seqan-2.0.1/seqan/consensus
+#                    src/main/cpp/graphmap/libs/seqan-2.0.1/seqan/file
+#                    src/main/cpp/graphmap/libs/seqan-2.0.1/seqan/find
+#                    src/main/cpp/graphmap/libs/seqan-2.0.1/seqan/gff_io
+#                    src/main/cpp/graphmap/libs/seqan-2.0.1/seqan/graph_algorithms
+#                    src/main/cpp/graphmap/libs/seqan-2.0.1/seqan/graph_align
+#                    src/main/cpp/graphmap/libs/seqan-2.0.1/seqan/graph_msa
+#                    src/main/cpp/graphmap/libs/seqan-2.0.1/seqan/graph_types
+#                    src/main/cpp/graphmap/libs/seqan-2.0.1/seqan/index
+#                    src/main/cpp/graphmap/libs/seqan-2.0.1/seqan/journaled_set
+#                    src/main/cpp/graphmap/libs/seqan-2.0.1/seqan/map
+#                    src/main/cpp/graphmap/libs/seqan-2.0.1/seqan/math
+#                    src/main/cpp/graphmap/libs/seqan-2.0.1/seqan/misc
+#                    src/main/cpp/graphmap/libs/seqan-2.0.1/seqan/modifier
+#                    src/main/cpp/graphmap/libs/seqan-2.0.1/seqan/parallel
+#                    src/main/cpp/graphmap/libs/seqan-2.0.1/seqan/parse_im
+#                    src/main/cpp/graphmap/libs/seqan-2.0.1/seqan/pipe
+#                    src/main/cpp/graphmap/libs/seqan-2.0.1/seqan/platform
+#                    src/main/cpp/graphmap/libs/seqan-2.0.1/seqan/random
+#                    src/main/cpp/graphmap/libs/seqan-2.0.1/seqan/realign
+#                    src/main/cpp/graphmap/libs/seqan-2.0.1/seqan/reduced_aminoacid
+#                    src/main/cpp/graphmap/libs/seqan-2.0.1/seqan/roi_io
+#                    src/main/cpp/graphmap/libs/seqan-2.0.1/seqan/score
+#                    src/main/cpp/graphmap/libs/seqan-2.0.1/seqan/seeds
+#                    src/main/cpp/graphmap/libs/seqan-2.0.1/seqan/seq_io
+#                    src/main/cpp/graphmap/libs/seqan-2.0.1/seqan/sequence
+#                    src/main/cpp/graphmap/libs/seqan-2.0.1/seqan/sequence_journaled
+#                    src/main/cpp/graphmap/libs/seqan-2.0.1/seqan/simple_intervals_io
+#                    src/main/cpp/graphmap/libs/seqan-2.0.1/seqan/statistics
+#                    src/main/cpp/graphmap/libs/seqan-2.0.1/seqan/store
+#                    src/main/cpp/graphmap/libs/seqan-2.0.1/seqan/stream
+#                    src/main/cpp/graphmap/libs/seqan-2.0.1/seqan/system
+#                    src/main/cpp/graphmap/libs/seqan-2.0.1/seqan/translation
+#                    src/main/cpp/graphmap/libs/seqan-2.0.1/seqan/ucsc_io
+#                    src/main/cpp/graphmap/libs/seqan-2.0.1/seqan/vcf_io
+#                    src/main/cpp/graphmap/log_system
+#                    src/main/cpp/graphmap/owler
+#                    src/main/cpp/graphmap/sequences
+#                    src/main/cpp/graphmap/sparsehash
+#                    src/main/cpp/graphmap/utility
 #)
 
 # Searches for a specified prebuilt library and stores the path as a

@@ -10,10 +10,10 @@
 	],
 	"toolchains" : 
 	{
-		"12837789181277585288" : 
+		"12485309151013454712" : 
 		{
-			"cCompilerExecutable" : "/Users/filipfloreani/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/bin/clang",
-			"cppCompilerExecutable" : "/Users/filipfloreani/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/bin/clang++"
+			"cCompilerExecutable" : "/Users/filipfloreani/Library/Android/sdk/ndk-bundle/toolchains/x86-4.9/prebuilt/darwin-x86_64/bin/i686-linux-android-gcc",
+			"cppCompilerExecutable" : "/Users/filipfloreani/Library/Android/sdk/ndk-bundle/toolchains/x86-4.9/prebuilt/darwin-x86_64/bin/i686-linux-android-g++"
 		}
 	}
 }
