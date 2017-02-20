@@ -111,7 +111,7 @@ public class LoadDataActivity extends AppCompatActivity {
             }
         };
 
-        timer.schedule(task, 0, 2*10);  // interval of one minute
+        timer.schedule(task, 0, 2*1000);  // interval of one minute
     }
 
     private void updateGraph(InputStreamReader is, BufferedReader bf){
