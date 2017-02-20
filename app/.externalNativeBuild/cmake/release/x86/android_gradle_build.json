@@ -2,18 +2,18 @@
 {
 	"buildFiles" : 
 	[
-		"/Users/filipfloreani/Development/Android/Metagenomix/app/src/main/cpp/CMakeLists.txt"
+		"/home/sarki/AndroidStudioProjects/Metagenomix/Metagenomix-Android/app/src/main/cpp/CMakeLists.txt"
 	],
 	"cleanCommands" : 
 	[
-		"/Users/filipfloreani/Library/Android/sdk/cmake/3.6.3155560/bin/cmake --build /Users/filipfloreani/Development/Android/Metagenomix/app/.externalNativeBuild/cmake/release/x86 --target clean"
+		"/home/sarki/Android/Sdk/cmake/3.6.3155560/bin/cmake --build /home/sarki/AndroidStudioProjects/Metagenomix/Metagenomix-Android/app/.externalNativeBuild/cmake/release/x86 --target clean"
 	],
 	"toolchains" : 
 	{
-		"12485309151013454712" : 
+		"3730437742486259125" : 
 		{
-			"cCompilerExecutable" : "/Users/filipfloreani/Library/Android/sdk/ndk-bundle/toolchains/x86-4.9/prebuilt/darwin-x86_64/bin/i686-linux-android-gcc",
-			"cppCompilerExecutable" : "/Users/filipfloreani/Library/Android/sdk/ndk-bundle/toolchains/x86-4.9/prebuilt/darwin-x86_64/bin/i686-linux-android-g++"
+			"cCompilerExecutable" : "/home/sarki/Android/Sdk/ndk-bundle/toolchains/x86-4.9/prebuilt/linux-x86_64/bin/i686-linux-android-gcc",
+			"cppCompilerExecutable" : "/home/sarki/Android/Sdk/ndk-bundle/toolchains/x86-4.9/prebuilt/linux-x86_64/bin/i686-linux-android-g++"
 		}
 	}
 }

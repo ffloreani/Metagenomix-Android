@@ -23,14 +23,28 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void loadData(View view) {
-        Intent intent = new Intent(this, LoadDataActivity.class);
-        writeGraphOutputTest();
-        startActivity(intent);
+        try {
+            Intent intent = new Intent(this, LoadDataActivity.class);
+            writeGraphOutputTest();
+            try {
+                startActivity(intent);
+            } catch (Exception exc) {
+                System.out.print("CANT START INTENT");
+            }
+        } catch (Exception e){
+            System.out.println("INTENT ERROR");
+        }
+
     }
 
     public void showHistory(View view) {
         Intent intent = new Intent(this, HistoryActivity.class);
         startActivity(intent);
+    }
+
+    public void test(View view){
+        System.out.println("TEST");
+        System.out.println("TEST");
     }
 
     private void writeGraphOutputTest(){
@@ -45,6 +59,7 @@ public class MainActivity extends AppCompatActivity {
                 printWriter.println(str);
             }
             printWriter.close();
+            System.out.println("successfully written file");
         } catch (Exception e) {
             System.out.println("Error while writing to file.");
         }

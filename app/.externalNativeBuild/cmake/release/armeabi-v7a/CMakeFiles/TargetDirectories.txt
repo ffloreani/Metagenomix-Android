@@ -1,2 +1,2 @@
-/Users/filipfloreani/Development/Android/Metagenomix/app/.externalNativeBuild/cmake/release/armeabi-v7a/CMakeFiles/edit_cache.dir
-/Users/filipfloreani/Development/Android/Metagenomix/app/.externalNativeBuild/cmake/release/armeabi-v7a/CMakeFiles/rebuild_cache.dir
+/home/sarki/AndroidStudioProjects/Metagenomix/Metagenomix-Android/app/.externalNativeBuild/cmake/release/armeabi-v7a/CMakeFiles/edit_cache.dir
+/home/sarki/AndroidStudioProjects/Metagenomix/Metagenomix-Android/app/.externalNativeBuild/cmake/release/armeabi-v7a/CMakeFiles/rebuild_cache.dir

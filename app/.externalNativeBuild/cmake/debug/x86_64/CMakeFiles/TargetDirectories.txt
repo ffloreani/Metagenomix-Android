@@ -1,2 +1,2 @@
-/Users/filipfloreani/Development/Android/Metagenomix/app/.externalNativeBuild/cmake/debug/x86_64/CMakeFiles/edit_cache.dir
-/Users/filipfloreani/Development/Android/Metagenomix/app/.externalNativeBuild/cmake/debug/x86_64/CMakeFiles/rebuild_cache.dir
+/home/sarki/AndroidStudioProjects/Metagenomix/Metagenomix-Android/app/.externalNativeBuild/cmake/debug/x86_64/CMakeFiles/edit_cache.dir
+/home/sarki/AndroidStudioProjects/Metagenomix/Metagenomix-Android/app/.externalNativeBuild/cmake/debug/x86_64/CMakeFiles/rebuild_cache.dir
