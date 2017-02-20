@@ -6,8 +6,10 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.os.FileObserver;
 import android.os.Handler;
+import android.support.v4.app.NavUtils;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.github.mikephil.charting.charts.PieChart;
@@ -213,6 +215,17 @@ public class LoadDataActivity extends AppCompatActivity {
                 n++;
                 map.put(number, n);
             }
+        }
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                NavUtils.navigateUpFromSameTask(this);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
         }
     }
 }
