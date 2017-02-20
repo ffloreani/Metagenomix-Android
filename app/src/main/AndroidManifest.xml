@@ -33,7 +33,7 @@
         </activity>
         <activity
             android:name="com.metagenomix.android.activities.HistoryActivity"
-            android:label="History" >
+            android:label="History Overview" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.metagenomix.android.activities.MainActivity" />
