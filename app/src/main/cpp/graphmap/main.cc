@@ -14,7 +14,7 @@
 #include "graphmap/graphmap.h"
 
 #include "owler/owler.h"
-#include "argumentparser/argparser.h"
+#include "argparser/argparser.h"
 
 int main(int argc, char *argv[]) {
   std::string program_name(argv[0]);

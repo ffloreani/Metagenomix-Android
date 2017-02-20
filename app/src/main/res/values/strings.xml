@@ -32,4 +32,7 @@
     <string name="permission_rationale">"Contacts permissions are needed for providing email
         completions."
     </string>
+    <string name="results">Results</string>
+    <string name="title_activity_start">StartActivity</string>
+    <string name="current_result">Current results</string>
 </resources>

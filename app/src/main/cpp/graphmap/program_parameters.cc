@@ -7,7 +7,7 @@
 
 #include "program_parameters.h"
 #include "utility/utility_general.h"
-#include "argumentparser/argparser.h"
+#include "argparser/argparser.h"
 
 int ProcessArgsGraphMap(int argc, char **argv, ProgramParameters *parameters)
 {

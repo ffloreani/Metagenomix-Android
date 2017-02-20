@@ -1,2 +1,10 @@
 /Users/filipfloreani/Development/Android/Metagenomix/app/.externalNativeBuild/cmake/release/armeabi/CMakeFiles/edit_cache.dir
 /Users/filipfloreani/Development/Android/Metagenomix/app/.externalNativeBuild/cmake/release/armeabi/CMakeFiles/rebuild_cache.dir
+/Users/filipfloreani/Development/Android/Metagenomix/app/.externalNativeBuild/cmake/release/armeabi/CMakeFiles/install.dir
+/Users/filipfloreani/Development/Android/Metagenomix/app/.externalNativeBuild/cmake/release/armeabi/CMakeFiles/install/strip.dir
+/Users/filipfloreani/Development/Android/Metagenomix/app/.externalNativeBuild/cmake/release/armeabi/CMakeFiles/list_install_components.dir
+/Users/filipfloreani/Development/Android/Metagenomix/app/.externalNativeBuild/cmake/release/armeabi/CMakeFiles/libdivsufsort.dir
+/Users/filipfloreani/Development/Android/Metagenomix/app/.externalNativeBuild/cmake/release/armeabi/CMakeFiles/graphmap.dir
+/Users/filipfloreani/Development/Android/Metagenomix/app/.externalNativeBuild/cmake/release/armeabi/CMakeFiles/opal.dir
+/Users/filipfloreani/Development/Android/Metagenomix/app/.externalNativeBuild/cmake/release/armeabi/CMakeFiles/install/local.dir
+/Users/filipfloreani/Development/Android/Metagenomix/app/.externalNativeBuild/cmake/release/armeabi/CMakeFiles/edlib.dir

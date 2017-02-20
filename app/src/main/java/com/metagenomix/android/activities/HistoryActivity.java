@@ -48,6 +48,5 @@ public class HistoryActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
     }
 }

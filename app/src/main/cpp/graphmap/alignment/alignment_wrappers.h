@@ -20,11 +20,11 @@
 #include <libs/seqan-2.0.1/seqan/basic.h>
 #include <libs/seqan-2.0.1/seqan/sequence.h>
 #include <libs/seqan-2.0.1/seqan/stream.h>
-#include <program_parameters.h>
+#include "../program_parameters.h"
 #include <libs/edlib.h>
-#include <cigargen.h>
-#include <log_system/log_system.h>
-#include <containers/region.h>
+#include "cigargen.h"
+#include "../log_system/log_system.h"
+#include "../containers/region.h"
 
 #define ALIGNMENT_TYPE_SHW  0     /// Gaps at the end are not penalized.
 #define ALIGNMENT_TYPE_HW   1     /// Gaps at the beginning and the end are not penalized.
