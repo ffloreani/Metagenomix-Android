@@ -16,7 +16,7 @@
 #include <sstream>
 #include <algorithm>
 
-#include "../libs/edlib.h"
+#include "edlib.h"
 #include "../utility/utility_general.h"
 #include "../sequences/sequence_alignment.h"
 

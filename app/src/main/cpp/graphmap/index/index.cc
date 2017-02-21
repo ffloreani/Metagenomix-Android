@@ -5,7 +5,6 @@
  *      Author: Ivan Sovic
  */
 
-#include <../index/index.h>
 #include "../log_system/log_system.h"
 #include "index.h"
 

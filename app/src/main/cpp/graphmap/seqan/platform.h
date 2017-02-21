@@ -45,11 +45,11 @@
 #elif __PGI
     #include "platform/platform_pgi.h"
 #else
-    #include "platform/platform_gcc.h"
+    #include "seqan/platform/platform_gcc.h"
 #endif
 
 // NOTE(esiragusa): nvcc header must be included even if __CUDACC__ is not defined.
-#include "platform/platform_nvcc.h"
+#include "seqan/platform/platform_nvcc.h"
 
 // SEQAN_AUTO_PTR_NAME .... alias for the auto_ptr class template deprecated in C++11.
 // SEQAN_FORWARD_ARG,

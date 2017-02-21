@@ -1,0 +1,21 @@
+# ninja log v5
+0	2203	0	CMakeFiles/opal.dir/libs/opal/opal.cpp.o	ec1bab8b26e29b30
+2204	2385	0	/Users/filipfloreani/Development/Android/Metagenomix/app/build/intermediates/cmake/debug/obj/x86_64/libopal.so	3fff8d25f3d88584
+1	218	0	CMakeFiles/libdivsufsort.dir/libs/libdivsufsort/utils.cpp.o	1601629996cf3bb9
+0	270	0	CMakeFiles/libdivsufsort.dir/libs/libdivsufsort/divsufsort.cpp.o	9a4611d39ed1c1d4
+1	355	0	CMakeFiles/libdivsufsort.dir/libs/libdivsufsort/trsort.cpp.o	e342dbc4660323b2
+0	381	0	CMakeFiles/libdivsufsort.dir/libs/libdivsufsort/sssort.cpp.o	4beb13c417607fba
+381	467	0	/Users/filipfloreani/Development/Android/Metagenomix/app/build/intermediates/cmake/debug/obj/x86_64/liblibdivsufsort.so	21e9981628a3b4ab
+3	5834	0	CMakeFiles/graphmap.dir/graphmap/alignment/cigargen.cc.o	3482b7940ff7476b
+7	8557	0	CMakeFiles/graphmap.dir/graphmap/argparser/argparser.cc.o	a2dcc8f5998cd485
+5835	10427	0	CMakeFiles/graphmap.dir/graphmap/containers/mapping_data.cc.o	8d8e0844a0fa276b
+10427	13231	0	CMakeFiles/graphmap.dir/graphmap/containers/region.cc.o	2d102808844e9d9b
+8557	14223	0	CMakeFiles/graphmap.dir/graphmap/containers/path_graph_entry.cc.o	2e71c021df5dbc08
+6	2793	0	CMakeFiles/graphmap.dir/graphmap/containers/vertices.cc.o	ffd08b4bad882ad8
+5	4133	0	CMakeFiles/graphmap.dir/graphmap/containers/score_registry.cc.o	d72f6c8cce690597
+2793	6200	0	CMakeFiles/graphmap.dir/graphmap/graphmap/core_graphmap.cc.o	af5380d4590cff02
+4133	7336	0	CMakeFiles/graphmap.dir/graphmap/graphmap/experimental.cc.o	9e87d16154260603
+6201	14392	0	CMakeFiles/graphmap.dir/graphmap/graphmap/filter_anchors.cc.o	5aba1112a934c7c4
+7337	14628	0	CMakeFiles/graphmap.dir/graphmap/graphmap/graphmap.cc.o	eeb0d4ef44d0d5c1
+14416	16929	0	CMakeFiles/graphmap.dir/graphmap/graphmap/lcs_anchored.cc.o	c75afd7bd2262d
+14628	17765	0	CMakeFiles/graphmap.dir/graphmap/graphmap/lcs_semiglobal.cc.o	4d58bcda0414dd8a

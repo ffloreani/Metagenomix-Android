@@ -7,7 +7,7 @@
 
 #include <omp.h>
 #include <algorithm>
-#include "libs/libdivsufsort-2.0.1-64bit/divsufsort64.h"
+#include "divsufsort64.h"
 #include "graphmap.h"
 
 

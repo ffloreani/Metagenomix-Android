@@ -13,18 +13,18 @@ android {
         externalNativeBuild {
             cmake {
                 arguments "-DANDROID_TOOLCHAIN=gcc"
-                cppFlags "-std=c++11 -fopenmp -frtti -fexceptions"
+                cppFlags "-std=c++11 -fopenmp -frtti -fexceptions -fpermissive"
 
                 // Specifies the ABI configurations of your native
                 // libraries Gradle should build and package with your APK.
-                abiFilters 'armeabi', 'armeabi-v7a'
+                abiFilters 'x86_64'
             }
         }
 
         ndk {
             // Specifies the ABI configurations of your native
             // libraries Gradle should build and package with your APK.
-            abiFilters 'armeabi', 'armeabi-v7a'
+            abiFilters 'x86_64'
         }
     }
     buildTypes {

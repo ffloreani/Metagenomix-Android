@@ -6,9 +6,9 @@
  */
 
 #include "alignment_wrappers.h"
-#include "../libs/edlibcigar.h"
-#include "../libs/opal.h"
-#include "../../libs/seqan/align/align_config.h"
+#include "edlibcigar.h"
+#include "opal.h"
+#include "seqan/align/align_config.h"
 
 
 int LocalizeAlignmentPosWithMyers(const int8_t *read_data, int64_t read_length,

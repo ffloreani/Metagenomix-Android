@@ -54,7 +54,7 @@
 #include <pthread.h>
 #include <errno.h>
 #include <semaphore.h>
-#include <aio.h>
+#include <linux/aio_abi.h>
 #include <sys/mman.h>
 
 #ifndef O_LARGEFILE

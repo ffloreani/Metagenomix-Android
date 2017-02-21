@@ -29,8 +29,8 @@ extern "C" {
 }
 
 #include "opal.h"
-#include "../../../../../../../../../Library/Android/sdk/ndk-bundle/toolchains/x86-4.9/prebuilt/darwin-x86_64/lib/gcc/i686-linux-android/4.9.x/include/emmintrin.h"
-#include "../../../../../../../../../Library/Android/sdk/ndk-bundle/toolchains/x86_64-4.9/prebuilt/darwin-x86_64/lib/gcc/x86_64-linux-android/4.9.x/include/x86intrin.h"
+//#include "../../../../../../../../../Library/Android/sdk/ndk-bundle/toolchains/x86-4.9/prebuilt/darwin-x86_64/lib/gcc/i686-linux-android/4.9.x/include/emmintrin.h"
+//#include "../../../../../../../../../Library/Android/sdk/ndk-bundle/toolchains/x86_64-4.9/prebuilt/darwin-x86_64/lib/gcc/x86_64-linux-android/4.9.x/include/x86intrin.h"
 
 
 // I define aliases for SSE intrinsics, so they can be used in code not depending on SSE generation.

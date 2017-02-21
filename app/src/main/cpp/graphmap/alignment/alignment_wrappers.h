@@ -16,12 +16,12 @@
 #include <sstream>
 #include <vector>
 
-#include <libs/seqan-2.0.1/seqan/align.h>
-#include <libs/seqan-2.0.1/seqan/basic.h>
-#include <libs/seqan-2.0.1/seqan/sequence.h>
-#include <libs/seqan-2.0.1/seqan/stream.h>
-#include "../program_parameters.h"
-#include <libs/edlib.h>
+#include <seqan/align.h>
+#include <seqan/basic.h>
+#include <seqan/sequence.h>
+#include <seqan/stream.h>
+#include "program_parameters.h"
+#include <edlib.h>
 #include "cigargen.h"
 #include "../log_system/log_system.h"
 #include "../containers/region.h"
@@ -31,7 +31,7 @@
 #define ALIGNMENT_TYPE_NW   2     /// Global alignment (gaps at the beginning and the end are penalized).
 
 #ifndef RELEASE_VERSION
-  #include "libs/opal.h"
+  #include "opal.h"
 #endif
 
 typedef int (*AlignmentFunctionType)(const int8_t*, int64_t, const int8_t*, int64_t, int64_t, int64_t, int64_t, int64_t, int64_t, int64_t, int64_t*, int64_t*, int64_t*, std::vector<unsigned char> &);

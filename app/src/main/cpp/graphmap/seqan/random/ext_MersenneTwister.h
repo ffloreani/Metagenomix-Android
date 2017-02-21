@@ -73,7 +73,7 @@ namespace ext {
 // Not thread safe (unless auto-initialization is avoided and each thread has
 // its own MTRand object)
 
-#include <iostream>
+#include <iostream> "limits.h"
 #include <climits>
 #include <cstdio>
 #include <ctime>

@@ -48,8 +48,8 @@
 // Math Data Structures
 // ==========================================================================
 
-#include "math/math_common_factor.h"
-#include "math/math_operators.h"
-#include "math/math_rational.h"
+#include "seqan/math/math_common_factor.h"
+#include "seqan/math/math_operators.h"
+#include "seqan/math/math_rational.h"
 
 #endif  // SEQAN_MATH_H_

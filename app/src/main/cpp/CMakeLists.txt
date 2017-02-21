@@ -50,26 +50,14 @@ install(FILES ${HEADERS_OPL} DESTINATION include/${PROJECT_NAME})
 
 
 # SEQAN LIBRARY
-file(GLOB HEADERS_SEQ libs/seqan/*.h)
-install(FILES ${HEADERS_SEQ} DESTINATION include/${PROJECT_NAME})
+# file(GLOB HEADERS_SEQ libs/seqan/*.h)
+# install(FILES ${HEADERS_SEQ} DESTINATION include/${PROJECT_NAME})
 
 
 # GRAPHMAP LIBRARY
 file(GLOB_RECURSE SOURCES_GMP graphmap/*.cc)
 
-include_directories(graphmap
-                    graphmap/algorithm
-                    graphmap/alignment
-                    graphmap/argparser
-                    graphmap/containers
-                    graphmap/graphmap
-                    graphmap/index
-                    graphmap/log_system
-                    graphmap/owler
-                    graphmap/sequences
-                    graphmap/sparsehash/internal
-                    graphmap/sparsehash
-                    graphmap/utility)
+include_directories(graphmap)
 
 add_library(graphmap SHARED ${SOURCES_GMP})
 
