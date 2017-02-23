@@ -5,7 +5,6 @@ import android.content.Context;
 import android.util.Log;
 
 import com.metagenomix.android.model.DNASegment;
-import com.metagenomix.android.model.DNASequence;
 
 import java.util.concurrent.LinkedBlockingQueue;
 
@@ -40,8 +39,8 @@ public class MetagenomixApplication extends Application {
     }
 
     public static void logSegmentQueue() {
-        for (DNASegment segment: segmentQueue) {
-            Log.d("SegmentQueue", segment.getSequenceID() +  ", " + segment.getSegment());
+        for (DNASegment segment : segmentQueue) {
+            Log.d("SegmentQueue", segment.getSequenceID() + ", " + segment.getSegment());
         }
         Log.d("SegmentQueue", "Finished logging segments");
     }

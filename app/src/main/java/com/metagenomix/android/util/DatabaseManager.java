@@ -1,4 +1,4 @@
-package com.metagenomix.android.activities;
+package com.metagenomix.android.util;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -55,15 +55,13 @@ public class DatabaseManager extends SQLiteOpenHelper {
         db.close();
     }
 
-    //
-
-    public ArrayList<Record> getAllRecords(){
+    public ArrayList<Record> getAllRecords() {
         ArrayList<Record> history = new ArrayList<>();
         String selectQuery = "SELECT  * FROM " + TABLE;
         SQLiteDatabase db = getReadableDatabase();
         Cursor cursor = db.rawQuery(selectQuery, null);
 
-        if(cursor.moveToFirst()) {
+        if (cursor.moveToFirst()) {
             do {
                 Record record = new Record();
                 record.setDate(cursor.getString(0));
@@ -74,18 +72,18 @@ public class DatabaseManager extends SQLiteOpenHelper {
                 history.add(record);
             } while (cursor.moveToNext());
         }
+
         return history;
     }
 
     public static Map<String, Float> jsonToMap(String t) {
-
         HashMap<String, Float> map = new HashMap<>();
         try {
             JSONObject jObject = new JSONObject(t);
             Iterator<?> keys = jObject.keys();
 
-            while( keys.hasNext() ){
-                String key = (String)keys.next();
+            while (keys.hasNext()) {
+                String key = (String) keys.next();
                 Float value = Float.parseFloat(jObject.getString(key));
                 map.put(key, value);
 
@@ -94,14 +92,14 @@ public class DatabaseManager extends SQLiteOpenHelper {
             e.printStackTrace();
         }
 
-
         return map;
     }
 
-    public String[] getColumns(){
+    public String[] getColumns() {
         SQLiteDatabase dataBase = getReadableDatabase();
         Cursor dbCursor = dataBase.query(TABLE, null, null, null, null, null, null);
         String[] columnNames = dbCursor.getColumnNames();
+
         return columnNames;
     }
 }

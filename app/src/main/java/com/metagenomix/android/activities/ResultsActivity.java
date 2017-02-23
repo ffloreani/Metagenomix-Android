@@ -2,8 +2,9 @@ package com.metagenomix.android.activities;
 
 import android.content.Context;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 
 import com.metagenomix.android.R;
@@ -16,6 +17,8 @@ import java.io.PrintWriter;
 
 public class ResultsActivity extends AppCompatActivity {
 
+    private static final String TAG = "ResultsActivity";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,19 +30,19 @@ public class ResultsActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    private void writeGraphOutputTest(){
+    private void writeGraphOutputTest() {
         try {
             FileOutputStream fos = openFileOutput("graph.txt", Context.MODE_PRIVATE);
             PrintWriter printWriter = new PrintWriter(new OutputStreamWriter(fos));
 
             BufferedReader bf = new BufferedReader(new InputStreamReader(getAssets().open("graph_map_output_example.txt")));
-            String str = "";
-            while ( (str = bf.readLine()) != null ) {
+            String str;
+            while ((str = bf.readLine()) != null) {
                 printWriter.println(str);
             }
             printWriter.close();
         } catch (Exception e) {
-            System.out.println("Error while writing to file.");
+            Log.d(TAG, "Error while writing to file.");
         }
     }
 

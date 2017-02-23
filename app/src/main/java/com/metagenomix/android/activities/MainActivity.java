@@ -2,8 +2,9 @@ package com.metagenomix.android.activities;
 
 import android.content.Context;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 
 import com.metagenomix.android.R;
@@ -15,6 +16,8 @@ import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 
 public class MainActivity extends AppCompatActivity {
+
+    private static final String TAG = "MainActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,10 +32,10 @@ public class MainActivity extends AppCompatActivity {
             try {
                 startActivity(intent);
             } catch (Exception exc) {
-                System.out.print("CANT START INTENT");
+                Log.d(TAG, "CANT START INTENT");
             }
-        } catch (Exception e){
-            System.out.println("INTENT ERROR");
+        } catch (Exception e) {
+            Log.d(TAG, "INTENT ERROR");
         }
 
     }
@@ -42,12 +45,12 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void test(View view){
-        System.out.println("TEST");
-        System.out.println("TEST");
+    public void test(View view) {
+        Log.d(TAG, "TEST");
+        Log.d(TAG, "TEST");
     }
 
-    private void writeGraphOutputTest(){
+    private void writeGraphOutputTest() {
 
         try {
             FileOutputStream fos = openFileOutput("graph.txt", Context.MODE_PRIVATE);
@@ -55,13 +58,13 @@ public class MainActivity extends AppCompatActivity {
 
             BufferedReader bf = new BufferedReader(new InputStreamReader(getAssets().open("graph_map_output_example.txt")));
             String str = "";
-            while ( (str = bf.readLine()) != null ) {
+            while ((str = bf.readLine()) != null) {
                 printWriter.println(str);
             }
             printWriter.close();
-            System.out.println("successfully written file");
+            Log.d(TAG, "successfully written file");
         } catch (Exception e) {
-            System.out.println("Error while writing to file.");
+            Log.d(TAG, "Error while writing to file.");
         }
     }
 
@@ -82,7 +85,7 @@ public class MainActivity extends AppCompatActivity {
             }
             printWriter.close();
         } catch (Exception exc) {
-            System.out.println("Error while writing to file.");
+            Log.d(TAG, "Error while writing to file.");
         }
 
     }*/

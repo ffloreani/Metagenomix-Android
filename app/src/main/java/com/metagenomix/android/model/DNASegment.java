@@ -1,16 +1,12 @@
 package com.metagenomix.android.model;
 
-import android.support.annotation.NonNull;
-
 /**
  * Created by filipfloreani on 04/01/2017.
  */
 
 public class DNASegment {
 
-    @NonNull
     private String sequenceID;
-    @NonNull
     private String segment;
     private boolean wasQueued = false;
 
@@ -18,26 +14,24 @@ public class DNASegment {
         this("", "");
     }
 
-    public DNASegment(@NonNull String sequenceID, @NonNull String segment) {
+    public DNASegment(String sequenceID, String segment) {
         this.sequenceID = sequenceID;
         this.segment = segment;
     }
 
-    @NonNull
     public String getSequenceID() {
         return sequenceID;
     }
 
-    public void setSequenceID(@NonNull String sequenceID) {
+    public void setSequenceID(String sequenceID) {
         this.sequenceID = sequenceID;
     }
 
-    @NonNull
     public String getSegment() {
         return segment;
     }
 
-    public void setSegment(@NonNull String segment) {
+    public void setSegment(String segment) {
         this.segment = segment;
     }
 

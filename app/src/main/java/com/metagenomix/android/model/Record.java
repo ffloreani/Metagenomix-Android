@@ -18,7 +18,7 @@ public class Record implements Serializable {
         this.map = map;
     }
 
-    public void setDate(String date){
+    public void setDate(String date) {
         this.date = date;
     }
 
@@ -26,11 +26,11 @@ public class Record implements Serializable {
         this.map = map;
     }
 
-    public String getDate(){
+    public String getDate() {
         return date;
     }
 
-    public Map<String, Float> getMap(){
+    public Map<String, Float> getMap() {
         return map;
     }
 }

@@ -13,26 +13,26 @@
         android:id="@+id/load_data"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/load_data"
+        android:layout_alignParentStart="true"
         android:onClick="loadData"
-        android:layout_alignParentStart="true" />
+        android:text="@string/load_data" />
 
     <Button
+        android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
-        android:text="@string/history"
         android:onClick="showHistory"
-        android:id="@+id/button" />
+        android:text="@string/history" />
 
     <Button
+        android:id="@+id/test"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TEST"
-        android:onClick="test"
-        android:id="@+id/test"
         android:layout_below="@+id/load_data"
+        android:layout_marginTop="98dp"
         android:layout_toEndOf="@+id/load_data"
-        android:layout_marginTop="98dp" />
+        android:onClick="test"
+        android:text="TEST" />
 
 </RelativeLayout>

@@ -1,8 +1,8 @@
 package com.metagenomix.android.activities;
 
 import android.graphics.Color;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 
 import com.github.mikephil.charting.charts.PieChart;
 import com.github.mikephil.charting.components.Legend;
@@ -32,7 +32,7 @@ public class GraphActivity extends AppCompatActivity {
     private void addDataSet(PieChart pieChart, Map<String, Float> map) {
         ArrayList<PieEntry> pieEntries = new ArrayList<>();
 
-        for(Map.Entry<String,Float> entry: map.entrySet()) {
+        for (Map.Entry<String, Float> entry : map.entrySet()) {
             pieEntries.add(new PieEntry(entry.getValue(), entry.getKey()));
         }
 

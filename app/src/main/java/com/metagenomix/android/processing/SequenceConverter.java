@@ -1,6 +1,5 @@
 package com.metagenomix.android.processing;
 
-import android.support.annotation.NonNull;
 import android.util.Log;
 import android.util.SparseArray;
 
@@ -31,7 +30,6 @@ public abstract class SequenceConverter {
                 .getIdentifier("environment_sample", "raw", "com.metagenomix.android");
     }
 
-    @NonNull
     public static List<DNASequence> getSequenceList() {
         return sequenceList;
     }

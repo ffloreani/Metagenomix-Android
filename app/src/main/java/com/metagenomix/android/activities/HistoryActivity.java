@@ -12,6 +12,7 @@ import android.widget.ListView;
 
 import com.metagenomix.android.R;
 import com.metagenomix.android.model.Record;
+import com.metagenomix.android.util.DatabaseManager;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -31,7 +32,7 @@ public class HistoryActivity extends AppCompatActivity {
         final ArrayList<String> rec = new ArrayList<>();
         final Map<String, Record> historyMap = new HashMap<>();
 
-        for(Record r: records){
+        for (Record r : records) {
             rec.add(r.getDate());
             historyMap.put(r.getDate(), r);
         }
@@ -44,7 +45,7 @@ public class HistoryActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Intent intent = new Intent(getApplicationContext(), GraphActivity.class);
-                String selectedFromList =(String) (listView.getItemAtPosition(i));
+                String selectedFromList = (String) (listView.getItemAtPosition(i));
                 Record record = historyMap.get(selectedFromList);
                 intent.putExtra("data", record);
                 startActivity(intent);

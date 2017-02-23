@@ -19,16 +19,14 @@ import com.github.mikephil.charting.data.PieDataSet;
 import com.github.mikephil.charting.data.PieEntry;
 import com.metagenomix.android.R;
 import com.metagenomix.android.model.Record;
+import com.metagenomix.android.util.DatabaseManager;
 import com.metagenomix.android.util.RecursiveFileObserver;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
-import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -65,18 +63,17 @@ public class LoadDataActivity extends AppCompatActivity {
                 bufferedReader = new BufferedReader(inputStreamReader);
                 bufferedReader.readLine();
             }
-        }
-        catch (FileNotFoundException e) {
+        } catch (FileNotFoundException e) {
             Log.e("login activity", "File not found: " + e.toString());
         } catch (IOException e) {
             e.printStackTrace();
         }
 
         observer =
-                new RecursiveFileObserver(this.getFilesDir().toString()+filename) {
+                new RecursiveFileObserver(this.getFilesDir().toString() + filename) {
                     @Override
                     public void onEvent(int event, String file) {
-                        if(event == FileObserver.MODIFY){
+                        if (event == FileObserver.MODIFY) {
                             updateGraph(inputStreamReader, bufferedReader);
                         }
                     }
@@ -113,10 +110,10 @@ public class LoadDataActivity extends AppCompatActivity {
             }
         };
 
-        timer.schedule(task, 0, 2*1000);  // interval of one minute
+        timer.schedule(task, 0, 2 * 1000);  // interval of one minute
     }
 
-    private void updateGraph(InputStreamReader is, BufferedReader bf){
+    private void updateGraph(InputStreamReader is, BufferedReader bf) {
         ArrayList<String> numbers = readFromFile(this, is, bf);
         populateMap(map, numbers);
         pieChart = (PieChart) findViewById(R.id.idPieChart);
@@ -142,10 +139,10 @@ public class LoadDataActivity extends AppCompatActivity {
 
     public String handleLine(String line) {
         int position = line.indexOf("|ti|");
-        String lineSub = line.substring(position+4, line.length());
+        String lineSub = line.substring(position + 4, line.length());
         String finalLine = "";
-        for(int i=0; i<lineSub.length(); i++) {
-            if(lineSub.charAt(i) != '|') {
+        for (int i = 0; i < lineSub.length(); i++) {
+            if (lineSub.charAt(i) != '|') {
                 finalLine += lineSub.charAt(i);
             } else {
                 break;
@@ -155,8 +152,8 @@ public class LoadDataActivity extends AppCompatActivity {
     }
 
     private void addDataSet(PieChart pieChart) {
-        ArrayList<PieEntry> yEntrys= new ArrayList<>();
-        for(Map.Entry<String, Float> entry: map.entrySet()){
+        ArrayList<PieEntry> yEntrys = new ArrayList<>();
+        for (Map.Entry<String, Float> entry : map.entrySet()) {
             yEntrys.add(new PieEntry(entry.getValue(), entry.getKey()));
             Log.e(entry.getKey().toString(), entry.getValue().toString());
         }
@@ -189,14 +186,13 @@ public class LoadDataActivity extends AppCompatActivity {
             if (inputStream != null) {
                 String line = bufferedReader.readLine();
                 String[] lineArr = handleLine(line).split(",");
-                for(String s: lineArr){
+                for (String s : lineArr) {
                     numbers.add(s);
                 }
             } else {
                 Log.e("NULL", "//////////////#################3///////////////");
             }
-        }
-        catch (FileNotFoundException e) {
+        } catch (FileNotFoundException e) {
             Log.e("login activity", "File not found: " + e.toString());
         } catch (IOException e) {
             Log.e("login activity", "Can not read file: " + e.toString());
@@ -209,9 +205,9 @@ public class LoadDataActivity extends AppCompatActivity {
         /*
         * TODO: ovdje napravi upit u EM ALGORITAM sto se tice imena, posalji mu broj iz liste list
         * dobij float (vjerojatnost pojave), na temelju nje odredi velicinu polja u chartu*/
-        for(String number: list) {
-            if(!map.containsKey(number)) {
-                map.put(number,1.0f);
+        for (String number : list) {
+            if (!map.containsKey(number)) {
+                map.put(number, 1.0f);
             } else {
                 float n = map.get(number);
                 n++;
