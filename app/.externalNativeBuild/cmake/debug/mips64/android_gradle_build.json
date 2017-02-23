@@ -2,12 +2,12 @@
 {
 	"buildFiles" : 
 	[
-		"/Users/filipfloreani/Development/Android/Metagenomix/app/src/main/cpp/CMakeLists.txt"
+		"/home/sarki/AndroidStudioProjects/Metagenomix/Metagenomix-Android/app/src/main/cpp/CMakeLists.txt"
 	],
 	"cFileExtensions" : [ "c" ],
 	"cleanCommands" : 
 	[
-		"/Users/filipfloreani/Library/Android/sdk/cmake/3.6.3155560/bin/cmake --build /Users/filipfloreani/Development/Android/Metagenomix/app/.externalNativeBuild/cmake/debug/mips64 --target clean"
+		"/home/sarki/Android/Sdk/cmake/3.6.3155560/bin/cmake --build /home/sarki/AndroidStudioProjects/Metagenomix/Metagenomix-Android/app/.externalNativeBuild/cmake/debug/mips64 --target clean"
 	],
 	"libraries" : 
 	{
@@ -74,10 +74,10 @@
 	},
 	"toolchains" : 
 	{
-		"13081827339756199200" : 
+		"1208399418399532128" : 
 		{
-			"cCompilerExecutable" : "/Users/filipfloreani/Library/Android/sdk/ndk-bundle/toolchains/mips64el-linux-android-4.9/prebuilt/darwin-x86_64/bin/mips64el-linux-android-gcc",
-			"cppCompilerExecutable" : "/Users/filipfloreani/Library/Android/sdk/ndk-bundle/toolchains/mips64el-linux-android-4.9/prebuilt/darwin-x86_64/bin/mips64el-linux-android-g++"
+			"cCompilerExecutable" : "/home/sarki/Android/Sdk/ndk-bundle/toolchains/mips64el-linux-android-4.9/prebuilt/linux-x86_64/bin/mips64el-linux-android-gcc",
+			"cppCompilerExecutable" : "/home/sarki/Android/Sdk/ndk-bundle/toolchains/mips64el-linux-android-4.9/prebuilt/linux-x86_64/bin/mips64el-linux-android-g++"
 		}
 	}
 }

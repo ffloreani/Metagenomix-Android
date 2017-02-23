@@ -25,5 +25,14 @@
         android:onClick="showHistory"
         android:id="@+id/button" />
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TEST"
+        android:onClick="test"
+        android:id="@+id/test"
+        android:layout_below="@+id/load_data"
+        android:layout_toEndOf="@+id/load_data"
+        android:layout_marginTop="98dp" />
 
 </RelativeLayout>
