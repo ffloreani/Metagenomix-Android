@@ -1,0 +1,83 @@
+
+{
+	"buildFiles" : 
+	[
+		"/Users/filipfloreani/Development/Android/Metagenomix/app/src/main/cpp/CMakeLists.txt"
+	],
+	"cFileExtensions" : [ "c" ],
+	"cleanCommands" : 
+	[
+		"/Users/filipfloreani/Library/Android/sdk/cmake/3.6.3155560/bin/cmake --build /Users/filipfloreani/Development/Android/Metagenomix/app/.externalNativeBuild/cmake/debug/mips --target clean"
+	],
+	"libraries" : 
+	{
+		"minimap-Debug-mips" : 
+		{
+			"abi" : "mips",
+			"artifactName" : "minimap",
+			"buildCommand" : "/Users/filipfloreani/Library/Android/sdk/cmake/3.6.3155560/bin/cmake --build /Users/filipfloreani/Development/Android/Metagenomix/app/.externalNativeBuild/cmake/debug/mips --target minimap",
+			"buildType" : "debug",
+			"files" : 
+			[
+				
+				{
+					"flags" : "  --sysroot=/Users/filipfloreani/Library/Android/sdk/ndk-bundle/platforms/android-21/arch-mips -Dminimap_EXPORTS -I/Users/filipfloreani/Development/Android/Metagenomix/app/src/main/cpp/minimap  -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -Wa,--noexecstack -Wformat -Werror=format-security -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -Wa,--noexecstack -Wformat -Werror=format-security  -O0 -O0  -fPIC      -c ",
+					"src" : "/Users/filipfloreani/Development/Android/Metagenomix/app/src/main/cpp/minimap/bseq.c",
+					"workingDirectory" : "/Users/filipfloreani/Development/Android/Metagenomix/app/.externalNativeBuild/cmake/debug/mips"
+				},
+				
+				{
+					"flags" : "  --sysroot=/Users/filipfloreani/Library/Android/sdk/ndk-bundle/platforms/android-21/arch-mips -Dminimap_EXPORTS -I/Users/filipfloreani/Development/Android/Metagenomix/app/src/main/cpp/minimap  -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -Wa,--noexecstack -Wformat -Werror=format-security -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -Wa,--noexecstack -Wformat -Werror=format-security  -O0 -O0  -fPIC      -c ",
+					"src" : "/Users/filipfloreani/Development/Android/Metagenomix/app/src/main/cpp/minimap/index.c",
+					"workingDirectory" : "/Users/filipfloreani/Development/Android/Metagenomix/app/.externalNativeBuild/cmake/debug/mips"
+				},
+				
+				{
+					"flags" : "  --sysroot=/Users/filipfloreani/Library/Android/sdk/ndk-bundle/platforms/android-21/arch-mips -Dminimap_EXPORTS -I/Users/filipfloreani/Development/Android/Metagenomix/app/src/main/cpp/minimap  -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -Wa,--noexecstack -Wformat -Werror=format-security -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -Wa,--noexecstack -Wformat -Werror=format-security  -O0 -O0  -fPIC      -c ",
+					"src" : "/Users/filipfloreani/Development/Android/Metagenomix/app/src/main/cpp/minimap/kthread.c",
+					"workingDirectory" : "/Users/filipfloreani/Development/Android/Metagenomix/app/.externalNativeBuild/cmake/debug/mips"
+				},
+				
+				{
+					"flags" : "  --sysroot=/Users/filipfloreani/Library/Android/sdk/ndk-bundle/platforms/android-21/arch-mips -Dminimap_EXPORTS -I/Users/filipfloreani/Development/Android/Metagenomix/app/src/main/cpp/minimap  -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -Wa,--noexecstack -Wformat -Werror=format-security -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -Wa,--noexecstack -Wformat -Werror=format-security  -O0 -O0  -fPIC      -c ",
+					"src" : "/Users/filipfloreani/Development/Android/Metagenomix/app/src/main/cpp/minimap/main.c",
+					"workingDirectory" : "/Users/filipfloreani/Development/Android/Metagenomix/app/.externalNativeBuild/cmake/debug/mips"
+				},
+				
+				{
+					"flags" : "  --sysroot=/Users/filipfloreani/Library/Android/sdk/ndk-bundle/platforms/android-21/arch-mips -Dminimap_EXPORTS -I/Users/filipfloreani/Development/Android/Metagenomix/app/src/main/cpp/minimap  -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -Wa,--noexecstack -Wformat -Werror=format-security -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -Wa,--noexecstack -Wformat -Werror=format-security  -O0 -O0  -fPIC      -c ",
+					"src" : "/Users/filipfloreani/Development/Android/Metagenomix/app/src/main/cpp/minimap/map.c",
+					"workingDirectory" : "/Users/filipfloreani/Development/Android/Metagenomix/app/.externalNativeBuild/cmake/debug/mips"
+				},
+				
+				{
+					"flags" : "  --sysroot=/Users/filipfloreani/Library/Android/sdk/ndk-bundle/platforms/android-21/arch-mips -Dminimap_EXPORTS -I/Users/filipfloreani/Development/Android/Metagenomix/app/src/main/cpp/minimap  -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -Wa,--noexecstack -Wformat -Werror=format-security -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -Wa,--noexecstack -Wformat -Werror=format-security  -O0 -O0  -fPIC      -c ",
+					"src" : "/Users/filipfloreani/Development/Android/Metagenomix/app/src/main/cpp/minimap/misc.c",
+					"workingDirectory" : "/Users/filipfloreani/Development/Android/Metagenomix/app/.externalNativeBuild/cmake/debug/mips"
+				},
+				
+				{
+					"flags" : "  --sysroot=/Users/filipfloreani/Library/Android/sdk/ndk-bundle/platforms/android-21/arch-mips -Dminimap_EXPORTS -I/Users/filipfloreani/Development/Android/Metagenomix/app/src/main/cpp/minimap  -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -Wa,--noexecstack -Wformat -Werror=format-security -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -Wa,--noexecstack -Wformat -Werror=format-security  -O0 -O0  -fPIC      -c ",
+					"src" : "/Users/filipfloreani/Development/Android/Metagenomix/app/src/main/cpp/minimap/sdust.c",
+					"workingDirectory" : "/Users/filipfloreani/Development/Android/Metagenomix/app/.externalNativeBuild/cmake/debug/mips"
+				},
+				
+				{
+					"flags" : "  --sysroot=/Users/filipfloreani/Library/Android/sdk/ndk-bundle/platforms/android-21/arch-mips -Dminimap_EXPORTS -I/Users/filipfloreani/Development/Android/Metagenomix/app/src/main/cpp/minimap  -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -Wa,--noexecstack -Wformat -Werror=format-security -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -Wa,--noexecstack -Wformat -Werror=format-security  -O0 -O0  -fPIC      -c ",
+					"src" : "/Users/filipfloreani/Development/Android/Metagenomix/app/src/main/cpp/minimap/sketch.c",
+					"workingDirectory" : "/Users/filipfloreani/Development/Android/Metagenomix/app/.externalNativeBuild/cmake/debug/mips"
+				}
+			],
+			"output" : "/Users/filipfloreani/Development/Android/Metagenomix/app/build/intermediates/cmake/debug/obj/mips/libminimap.so",
+			"toolchain" : "11197284366706026657"
+		}
+	},
+	"toolchains" : 
+	{
+		"11197284366706026657" : 
+		{
+			"cCompilerExecutable" : "/Users/filipfloreani/Library/Android/sdk/ndk-bundle/toolchains/mipsel-linux-android-4.9/prebuilt/darwin-x86_64/bin/mipsel-linux-android-gcc",
+			"cppCompilerExecutable" : "/Users/filipfloreani/Library/Android/sdk/ndk-bundle/toolchains/mipsel-linux-android-4.9/prebuilt/darwin-x86_64/bin/mipsel-linux-android-g++"
+		}
+	}
+}

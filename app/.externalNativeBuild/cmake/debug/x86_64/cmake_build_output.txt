@@ -12,6 +12,7 @@
 -- Detecting CXX compiler ABI info - done
 -- Detecting CXX compile features
 -- Detecting CXX compile features - done
+-- Found ZLIB: /Users/filipfloreani/Library/Android/sdk/ndk-bundle/platforms/android-21/arch-x86_64/usr/lib64/libz.so (found version "1.2.3") 
 -- Configuring done
 -- Generating done
 -- Build files have been written to: /Users/filipfloreani/Development/Android/Metagenomix/app/.externalNativeBuild/cmake/debug/x86_64

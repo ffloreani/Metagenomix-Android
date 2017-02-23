@@ -1,10 +1,7 @@
 /Users/filipfloreani/Development/Android/Metagenomix/app/.externalNativeBuild/cmake/release/x86/CMakeFiles/edit_cache.dir
 /Users/filipfloreani/Development/Android/Metagenomix/app/.externalNativeBuild/cmake/release/x86/CMakeFiles/rebuild_cache.dir
+/Users/filipfloreani/Development/Android/Metagenomix/app/.externalNativeBuild/cmake/release/x86/CMakeFiles/minimap.dir
+/Users/filipfloreani/Development/Android/Metagenomix/app/.externalNativeBuild/cmake/release/x86/CMakeFiles/list_install_components.dir
 /Users/filipfloreani/Development/Android/Metagenomix/app/.externalNativeBuild/cmake/release/x86/CMakeFiles/install.dir
 /Users/filipfloreani/Development/Android/Metagenomix/app/.externalNativeBuild/cmake/release/x86/CMakeFiles/install/strip.dir
-/Users/filipfloreani/Development/Android/Metagenomix/app/.externalNativeBuild/cmake/release/x86/CMakeFiles/list_install_components.dir
-/Users/filipfloreani/Development/Android/Metagenomix/app/.externalNativeBuild/cmake/release/x86/CMakeFiles/libdivsufsort.dir
-/Users/filipfloreani/Development/Android/Metagenomix/app/.externalNativeBuild/cmake/release/x86/CMakeFiles/graphmap.dir
-/Users/filipfloreani/Development/Android/Metagenomix/app/.externalNativeBuild/cmake/release/x86/CMakeFiles/opal.dir
 /Users/filipfloreani/Development/Android/Metagenomix/app/.externalNativeBuild/cmake/release/x86/CMakeFiles/install/local.dir
-/Users/filipfloreani/Development/Android/Metagenomix/app/.externalNativeBuild/cmake/release/x86/CMakeFiles/edlib.dir

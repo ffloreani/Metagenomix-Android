@@ -180,14 +180,14 @@ CMAKE_TOOLCHAIN_FILE:FILEPATH=/Users/filipfloreani/Library/Android/sdk/ndk-bundl
 // Studio IDE projects all commands are done without /nologo.
 CMAKE_VERBOSE_MAKEFILE:BOOL=FALSE
 
-//Dependencies for target
-edlib_LIB_DEPENDS:STATIC=
+//Path to a file.
+ZLIB_INCLUDE_DIR:PATH=/Users/filipfloreani/Library/Android/sdk/ndk-bundle/platforms/android-21/arch-arm/usr/include
 
-//Dependencies for target
-graphmap_LIB_DEPENDS:STATIC=
+//Path to a library.
+ZLIB_LIBRARY_DEBUG:FILEPATH=ZLIB_LIBRARY_DEBUG-NOTFOUND
 
-//Dependencies for target
-libdivsufsort_LIB_DEPENDS:STATIC=
+//Path to a library.
+ZLIB_LIBRARY_RELEASE:FILEPATH=/Users/filipfloreani/Library/Android/sdk/ndk-bundle/platforms/android-21/arch-arm/usr/lib/libz.so
 
 //Value Computed by CMake
 metagenomix_BINARY_DIR:STATIC=/Users/filipfloreani/Development/Android/Metagenomix/app/.externalNativeBuild/cmake/debug/armeabi
@@ -195,8 +195,8 @@ metagenomix_BINARY_DIR:STATIC=/Users/filipfloreani/Development/Android/Metagenom
 //Value Computed by CMake
 metagenomix_SOURCE_DIR:STATIC=/Users/filipfloreani/Development/Android/Metagenomix/app/src/main/cpp
 
-//Dependencies for target
-opal_LIB_DEPENDS:STATIC=
+//Dependencies for the target
+minimap_LIB_DEPENDS:STATIC=general;/Users/filipfloreani/Library/Android/sdk/ndk-bundle/platforms/android-21/arch-arm/usr/lib/libz.so;
 
 
 ########################
@@ -324,4 +324,12 @@ CMAKE_STRIP-ADVANCED:INTERNAL=1
 CMAKE_UNAME:INTERNAL=/usr/bin/uname
 //ADVANCED property for variable: CMAKE_VERBOSE_MAKEFILE
 CMAKE_VERBOSE_MAKEFILE-ADVANCED:INTERNAL=1
+//Details about finding ZLIB
+FIND_PACKAGE_MESSAGE_DETAILS_ZLIB:INTERNAL=[/Users/filipfloreani/Library/Android/sdk/ndk-bundle/platforms/android-21/arch-arm/usr/lib/libz.so][/Users/filipfloreani/Library/Android/sdk/ndk-bundle/platforms/android-21/arch-arm/usr/include][v1.2.3()]
+//ADVANCED property for variable: ZLIB_INCLUDE_DIR
+ZLIB_INCLUDE_DIR-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: ZLIB_LIBRARY_DEBUG
+ZLIB_LIBRARY_DEBUG-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: ZLIB_LIBRARY_RELEASE
+ZLIB_LIBRARY_RELEASE-ADVANCED:INTERNAL=1
 

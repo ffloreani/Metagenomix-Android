@@ -1,0 +1,10 @@
+# ninja log v5
+6	896	0	CMakeFiles/minimap.dir/minimap/bseq.c.o	164f880c97470194
+7	897	0	CMakeFiles/minimap.dir/minimap/main.c.o	ef1b56ae77f8cdfc
+6	900	0	CMakeFiles/minimap.dir/minimap/index.c.o	d06ca55dc966ff8
+6	900	0	CMakeFiles/minimap.dir/minimap/kthread.c.o	cb771f4843ef1637
+8	901	0	CMakeFiles/minimap.dir/minimap/misc.c.o	f94fb6ac1673d218
+7	926	0	CMakeFiles/minimap.dir/minimap/map.c.o	730db0668212f819
+897	1013	0	CMakeFiles/minimap.dir/minimap/sketch.c.o	ed84cf6676657e67
+896	1060	0	CMakeFiles/minimap.dir/minimap/sdust.c.o	ee0e9cf1ac3ee6d9
+1060	1270	0	/Users/filipfloreani/Development/Android/Metagenomix/app/build/intermediates/cmake/debug/obj/mips64/libminimap.so	99c44072448d62d2
