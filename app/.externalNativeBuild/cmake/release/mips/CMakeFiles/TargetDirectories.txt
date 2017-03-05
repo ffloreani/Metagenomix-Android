@@ -1,0 +1,7 @@
+/Users/filipfloreani/Development/Android/Metagenomix/app/.externalNativeBuild/cmake/release/mips/CMakeFiles/edit_cache.dir
+/Users/filipfloreani/Development/Android/Metagenomix/app/.externalNativeBuild/cmake/release/mips/CMakeFiles/rebuild_cache.dir
+/Users/filipfloreani/Development/Android/Metagenomix/app/.externalNativeBuild/cmake/release/mips/CMakeFiles/minimap.dir
+/Users/filipfloreani/Development/Android/Metagenomix/app/.externalNativeBuild/cmake/release/mips/CMakeFiles/list_install_components.dir
+/Users/filipfloreani/Development/Android/Metagenomix/app/.externalNativeBuild/cmake/release/mips/CMakeFiles/install.dir
+/Users/filipfloreani/Development/Android/Metagenomix/app/.externalNativeBuild/cmake/release/mips/CMakeFiles/install/strip.dir
+/Users/filipfloreani/Development/Android/Metagenomix/app/.externalNativeBuild/cmake/release/mips/CMakeFiles/install/local.dir

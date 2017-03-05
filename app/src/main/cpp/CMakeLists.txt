@@ -9,6 +9,11 @@ file(GLOB SOURCES_MMP minimap/*.c)
 include_directories(minimap)
 add_library(minimap SHARED ${SOURCES_MMP})
 
+install(TARGETS minimap DESTINATION lib/${PROJECT_NAME})
+
+file(GLOB_RECURSE HEADERS_MMP minimap/*.h)
+install(FILES ${HEADERS_MMP} DESTINATION include/${PROJECT_NAME})
+
 # LINKING ZLIB LIBRARY TO MINIMAP
 find_package(ZLIB)
 if (ZLIB_FOUND)
@@ -16,7 +21,6 @@ if (ZLIB_FOUND)
     target_link_libraries(minimap ${ZLIB_LIBRARIES})
 endif()
 
-install(TARGETS minimap DESTINATION lib/${PROJECT_NAME})
-
-file(GLOB_RECURSE HEADERS_MMP minimap/*.h)
-install(FILES ${HEADERS_MMP} DESTINATION include/${PROJECT_NAME})
+target_link_libraries(minimap
+                      android
+                      log)

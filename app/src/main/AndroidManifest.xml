@@ -38,6 +38,12 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.metagenomix.android.activities.MainActivity" />
         </activity>
+        <activity android:name=".activities.ConversionActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.metagenomix.android.activities.MainActivity" />
+        </activity>
+        <activity android:name=".activities.ResultsActivity" />
     </application>
 
 </manifest>

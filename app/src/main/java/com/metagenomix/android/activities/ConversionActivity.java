@@ -1,6 +1,6 @@
 package com.metagenomix.android.activities;
 
-import android.content.Intent;
+import android.content.res.AssetManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
@@ -29,6 +29,8 @@ public class ConversionActivity extends AppCompatActivity {
     public static boolean isQueued = true;
     public boolean isConverted = false;
     private Handler feederHandler;
+
+    public native void map(AssetManager am, String samplePath, String databasePath);
 
     @BindView(R.id.status)
     TextView statusView;
@@ -93,13 +95,20 @@ public class ConversionActivity extends AppCompatActivity {
 
     @OnClick(R.id.results)
     public void onResultsClick() {
-        if (!isQueued) {
-            showAlertConverted("Segments are still being queued, please hold");
-            return;
-        }
-
-        Intent intent = new Intent(this, LoadDataActivity.class);
-        startActivity(intent);
+//        if (!isQueued) {
+//            showAlertConverted("Segments are still being queued, please hold");
+//            return;
+//        }
+//
+//        Intent intent = new Intent(this, LoadDataActivity.class);
+//        startActivity(intent);
+        Thread thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                map(ConversionActivity.this.getAssets(), "environment_sample.txt", "database.txt");
+            }
+        });
+        thread.start();
     }
 
     private void showAlertConverted(String message) {

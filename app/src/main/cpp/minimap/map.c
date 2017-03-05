@@ -1,10 +1,13 @@
 #include <stdlib.h>
 #include <string.h>
 #include <stdio.h>
+#include <android/log.h>
 #include "bseq.h"
 #include "kvec.h"
 #include "minimap.h"
 #include "sdust.h"
+
+#define DEBUG_TAG "Mapping"
 
 void mm_mapopt_init(mm_mapopt_t *opt) {
     opt->radius = 500;
@@ -361,12 +364,19 @@ static void *worker_pipeline(void *shared, int step, void *in) {
             for (j = 0; j < s->n_reg[i]; ++j) {
                 mm_reg1_t *r = &s->reg[i][j];
                 if (r->len < p->opt->min_match) continue;
-                printf("%s\t%d\t%d\t%d\t%c\t", t->name, t->l_seq, r->qs, r->qe, "+-"[r->rev]);
-                if (mi->name) fputs(mi->name[r->rid], stdout);
-                else printf("%d", r->rid + 1);
-                printf("\t%d\t%d\t%d\t%d\t%d\t255\tcm:i:%d\n", mi->len[r->rid], r->rs, r->re,
-                       r->len,
-                       r->re - r->rs > r->qe - r->qs ? r->re - r->rs : r->qe - r->qs, r->cnt);
+                __android_log_print(ANDROID_LOG_VERBOSE, DEBUG_TAG, "%s\t%d\t%d\t%d\t%c\t", t->name,
+                                    t->l_seq, r->qs, r->qe, "+-"[r->rev]);
+                if (mi->name) {
+                    __android_log_print(ANDROID_LOG_VERBOSE, DEBUG_TAG, "%s", mi->name[r->rid]);
+                } else {
+                    __android_log_print(ANDROID_LOG_VERBOSE, DEBUG_TAG, "%d", r->rid + 1);
+                }
+                __android_log_print(ANDROID_LOG_VERBOSE, DEBUG_TAG,
+                                    "\t%d\t%d\t%d\t%d\t%d\t255\tcm:i:%d\n", mi->len[r->rid], r->rs,
+                                    r->re,
+                                    r->len,
+                                    r->re - r->rs > r->qe - r->qs ? r->re - r->rs : r->qe - r->qs,
+                                    r->cnt);
             }
             free(s->reg[i]);
             free(s->seq[i].seq);
@@ -377,6 +387,19 @@ static void *worker_pipeline(void *shared, int step, void *in) {
         free(s->seq);
         free(s);
     }
+    return 0;
+}
+
+int mm_map_file_pointer(const mm_idx_t *idx, FILE *sample_fp, const mm_mapopt_t *opt, int n_threads,
+                        int tbatch_size) {
+    pipeline_t pl;
+    memset(&pl, 0, sizeof(pipeline_t));
+    pl.fp = bseq_file_open(sample_fp);
+    if (pl.fp == 0) return -1;
+    pl.opt = opt, pl.mi = idx;
+    pl.n_threads = n_threads, pl.batch_size = tbatch_size;
+    kt_pipeline(n_threads == 1 ? 1 : 2, worker_pipeline, &pl, 3);
+    bseq_file_close(pl.fp);
     return 0;
 }
 

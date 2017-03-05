@@ -1,0 +1,83 @@
+
+{
+	"buildFiles" : 
+	[
+		"/Users/filipfloreani/Development/Android/Metagenomix/app/src/main/cpp/CMakeLists.txt"
+	],
+	"cFileExtensions" : [ "c" ],
+	"cleanCommands" : 
+	[
+		"/Users/filipfloreani/Library/Android/sdk/cmake/3.6.3155560/bin/cmake --build /Users/filipfloreani/Development/Android/Metagenomix/app/.externalNativeBuild/cmake/release/armeabi-v7a --target clean"
+	],
+	"libraries" : 
+	{
+		"minimap-Release-armeabi-v7a" : 
+		{
+			"abi" : "armeabi-v7a",
+			"artifactName" : "minimap",
+			"buildCommand" : "/Users/filipfloreani/Library/Android/sdk/cmake/3.6.3155560/bin/cmake --build /Users/filipfloreani/Development/Android/Metagenomix/app/.externalNativeBuild/cmake/release/armeabi-v7a --target minimap",
+			"buildType" : "release",
+			"files" : 
+			[
+				
+				{
+					"flags" : "  --sysroot=/Users/filipfloreani/Library/Android/sdk/ndk-bundle/platforms/android-21/arch-arm -Dminimap_EXPORTS -I/Users/filipfloreani/Development/Android/Metagenomix/app/src/main/cpp/minimap  -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -march=armv7-a -mfloat-abi=softfp -mfpu=vfpv3-d16 -mthumb -Wa,--noexecstack -Wformat -Werror=format-security -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -march=armv7-a -mfloat-abi=softfp -mfpu=vfpv3-d16 -mthumb -Wa,--noexecstack -Wformat -Werror=format-security  -Os -DNDEBUG -Os -DNDEBUG  -fPIC      -c ",
+					"src" : "/Users/filipfloreani/Development/Android/Metagenomix/app/src/main/cpp/minimap/bseq.c",
+					"workingDirectory" : "/Users/filipfloreani/Development/Android/Metagenomix/app/.externalNativeBuild/cmake/release/armeabi-v7a"
+				},
+				
+				{
+					"flags" : "  --sysroot=/Users/filipfloreani/Library/Android/sdk/ndk-bundle/platforms/android-21/arch-arm -Dminimap_EXPORTS -I/Users/filipfloreani/Development/Android/Metagenomix/app/src/main/cpp/minimap  -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -march=armv7-a -mfloat-abi=softfp -mfpu=vfpv3-d16 -mthumb -Wa,--noexecstack -Wformat -Werror=format-security -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -march=armv7-a -mfloat-abi=softfp -mfpu=vfpv3-d16 -mthumb -Wa,--noexecstack -Wformat -Werror=format-security  -Os -DNDEBUG -Os -DNDEBUG  -fPIC      -c ",
+					"src" : "/Users/filipfloreani/Development/Android/Metagenomix/app/src/main/cpp/minimap/index.c",
+					"workingDirectory" : "/Users/filipfloreani/Development/Android/Metagenomix/app/.externalNativeBuild/cmake/release/armeabi-v7a"
+				},
+				
+				{
+					"flags" : "  --sysroot=/Users/filipfloreani/Library/Android/sdk/ndk-bundle/platforms/android-21/arch-arm -Dminimap_EXPORTS -I/Users/filipfloreani/Development/Android/Metagenomix/app/src/main/cpp/minimap  -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -march=armv7-a -mfloat-abi=softfp -mfpu=vfpv3-d16 -mthumb -Wa,--noexecstack -Wformat -Werror=format-security -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -march=armv7-a -mfloat-abi=softfp -mfpu=vfpv3-d16 -mthumb -Wa,--noexecstack -Wformat -Werror=format-security  -Os -DNDEBUG -Os -DNDEBUG  -fPIC      -c ",
+					"src" : "/Users/filipfloreani/Development/Android/Metagenomix/app/src/main/cpp/minimap/kthread.c",
+					"workingDirectory" : "/Users/filipfloreani/Development/Android/Metagenomix/app/.externalNativeBuild/cmake/release/armeabi-v7a"
+				},
+				
+				{
+					"flags" : "  --sysroot=/Users/filipfloreani/Library/Android/sdk/ndk-bundle/platforms/android-21/arch-arm -Dminimap_EXPORTS -I/Users/filipfloreani/Development/Android/Metagenomix/app/src/main/cpp/minimap  -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -march=armv7-a -mfloat-abi=softfp -mfpu=vfpv3-d16 -mthumb -Wa,--noexecstack -Wformat -Werror=format-security -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -march=armv7-a -mfloat-abi=softfp -mfpu=vfpv3-d16 -mthumb -Wa,--noexecstack -Wformat -Werror=format-security  -Os -DNDEBUG -Os -DNDEBUG  -fPIC      -c ",
+					"src" : "/Users/filipfloreani/Development/Android/Metagenomix/app/src/main/cpp/minimap/main.c",
+					"workingDirectory" : "/Users/filipfloreani/Development/Android/Metagenomix/app/.externalNativeBuild/cmake/release/armeabi-v7a"
+				},
+				
+				{
+					"flags" : "  --sysroot=/Users/filipfloreani/Library/Android/sdk/ndk-bundle/platforms/android-21/arch-arm -Dminimap_EXPORTS -I/Users/filipfloreani/Development/Android/Metagenomix/app/src/main/cpp/minimap  -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -march=armv7-a -mfloat-abi=softfp -mfpu=vfpv3-d16 -mthumb -Wa,--noexecstack -Wformat -Werror=format-security -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -march=armv7-a -mfloat-abi=softfp -mfpu=vfpv3-d16 -mthumb -Wa,--noexecstack -Wformat -Werror=format-security  -Os -DNDEBUG -Os -DNDEBUG  -fPIC      -c ",
+					"src" : "/Users/filipfloreani/Development/Android/Metagenomix/app/src/main/cpp/minimap/map.c",
+					"workingDirectory" : "/Users/filipfloreani/Development/Android/Metagenomix/app/.externalNativeBuild/cmake/release/armeabi-v7a"
+				},
+				
+				{
+					"flags" : "  --sysroot=/Users/filipfloreani/Library/Android/sdk/ndk-bundle/platforms/android-21/arch-arm -Dminimap_EXPORTS -I/Users/filipfloreani/Development/Android/Metagenomix/app/src/main/cpp/minimap  -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -march=armv7-a -mfloat-abi=softfp -mfpu=vfpv3-d16 -mthumb -Wa,--noexecstack -Wformat -Werror=format-security -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -march=armv7-a -mfloat-abi=softfp -mfpu=vfpv3-d16 -mthumb -Wa,--noexecstack -Wformat -Werror=format-security  -Os -DNDEBUG -Os -DNDEBUG  -fPIC      -c ",
+					"src" : "/Users/filipfloreani/Development/Android/Metagenomix/app/src/main/cpp/minimap/misc.c",
+					"workingDirectory" : "/Users/filipfloreani/Development/Android/Metagenomix/app/.externalNativeBuild/cmake/release/armeabi-v7a"
+				},
+				
+				{
+					"flags" : "  --sysroot=/Users/filipfloreani/Library/Android/sdk/ndk-bundle/platforms/android-21/arch-arm -Dminimap_EXPORTS -I/Users/filipfloreani/Development/Android/Metagenomix/app/src/main/cpp/minimap  -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -march=armv7-a -mfloat-abi=softfp -mfpu=vfpv3-d16 -mthumb -Wa,--noexecstack -Wformat -Werror=format-security -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -march=armv7-a -mfloat-abi=softfp -mfpu=vfpv3-d16 -mthumb -Wa,--noexecstack -Wformat -Werror=format-security  -Os -DNDEBUG -Os -DNDEBUG  -fPIC      -c ",
+					"src" : "/Users/filipfloreani/Development/Android/Metagenomix/app/src/main/cpp/minimap/sdust.c",
+					"workingDirectory" : "/Users/filipfloreani/Development/Android/Metagenomix/app/.externalNativeBuild/cmake/release/armeabi-v7a"
+				},
+				
+				{
+					"flags" : "  --sysroot=/Users/filipfloreani/Library/Android/sdk/ndk-bundle/platforms/android-21/arch-arm -Dminimap_EXPORTS -I/Users/filipfloreani/Development/Android/Metagenomix/app/src/main/cpp/minimap  -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -march=armv7-a -mfloat-abi=softfp -mfpu=vfpv3-d16 -mthumb -Wa,--noexecstack -Wformat -Werror=format-security -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -march=armv7-a -mfloat-abi=softfp -mfpu=vfpv3-d16 -mthumb -Wa,--noexecstack -Wformat -Werror=format-security  -Os -DNDEBUG -Os -DNDEBUG  -fPIC      -c ",
+					"src" : "/Users/filipfloreani/Development/Android/Metagenomix/app/src/main/cpp/minimap/sketch.c",
+					"workingDirectory" : "/Users/filipfloreani/Development/Android/Metagenomix/app/.externalNativeBuild/cmake/release/armeabi-v7a"
+				}
+			],
+			"output" : "/Users/filipfloreani/Development/Android/Metagenomix/app/build/intermediates/cmake/release/obj/armeabi-v7a/libminimap.so",
+			"toolchain" : "9541716478967597582"
+		}
+	},
+	"toolchains" : 
+	{
+		"9541716478967597582" : 
+		{
+			"cCompilerExecutable" : "/Users/filipfloreani/Library/Android/sdk/ndk-bundle/toolchains/arm-linux-androideabi-4.9/prebuilt/darwin-x86_64/bin/arm-linux-androideabi-gcc",
+			"cppCompilerExecutable" : "/Users/filipfloreani/Library/Android/sdk/ndk-bundle/toolchains/arm-linux-androideabi-4.9/prebuilt/darwin-x86_64/bin/arm-linux-androideabi-g++"
+		}
+	}
+}

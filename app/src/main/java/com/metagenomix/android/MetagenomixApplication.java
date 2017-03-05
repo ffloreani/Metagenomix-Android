@@ -17,6 +17,10 @@ public class MetagenomixApplication extends Application {
     private static Context context;
     private static LinkedBlockingQueue<DNASegment> segmentQueue;
 
+    static {
+        System.loadLibrary("minimap");
+    }
+
     @Override
     public void onCreate() {
         super.onCreate();

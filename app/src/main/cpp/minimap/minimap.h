@@ -88,6 +88,8 @@ mm_tbuf_t *mm_tbuf_init(void);
 void mm_tbuf_destroy(mm_tbuf_t *b);
 const mm_reg1_t *mm_map(const mm_idx_t *mi, int l_seq, const char *seq, int *n_regs, mm_tbuf_t *b, const mm_mapopt_t *opt, const char *name);
 
+int mm_map_file_pointer(const mm_idx_t *idx, FILE* sample_fp, const mm_mapopt_t *opt, int n_threads, int tbatch_size);
+
 int mm_map_file(const mm_idx_t *idx, const char *fn, const mm_mapopt_t *opt, int n_threads, int tbatch_size);
 
 // private functions (may be moved to a "mmpriv.h" in future)
