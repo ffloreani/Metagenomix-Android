@@ -13,10 +13,12 @@ import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.github.mikephil.charting.charts.PieChart;
+import com.github.mikephil.charting.components.Description;
 import com.github.mikephil.charting.components.Legend;
 import com.github.mikephil.charting.data.PieData;
 import com.github.mikephil.charting.data.PieDataSet;
 import com.github.mikephil.charting.data.PieEntry;
+import com.github.mikephil.charting.formatter.PercentFormatter;
 import com.metagenomix.android.R;
 import com.metagenomix.android.model.Record;
 import com.metagenomix.android.processing.MinimapProcessing;
@@ -155,6 +157,8 @@ public class LoadDataActivity extends AppCompatActivity {
         legend.setPosition(Legend.LegendPosition.ABOVE_CHART_CENTER);
 
         PieData pieData = new PieData(pieDataSet);
+
+        pieData.setValueFormatter(new PercentFormatter());
         pieChart.setData(pieData);
     }
 

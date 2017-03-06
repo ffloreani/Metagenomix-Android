@@ -56,6 +56,6 @@ public class MinimapProcessing {
     }
 
     public float getMatchProbability(int dbLen, int dbMatch) {
-        return dbMatch * 1.0f / dbLen;
+        return (dbMatch * 1.0f / dbLen) * 100;
     }
 }
