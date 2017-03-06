@@ -11,7 +11,7 @@ typedef struct {
     char *name, *seq;
 } bseq1_t;
 
-bseq_file_t * bseq_open(const char *fn);
+bseq_file_t *bseq_open(const char *fn);
 
 void bseq_close(bseq_file_t *fp);
 

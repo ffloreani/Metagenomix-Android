@@ -51,7 +51,8 @@ public class QueueFeeder implements Runnable {
             if (dnaSequence.isProcessed()) sequenceList.remove(dnaSequence);
 
             sendProcessedMessage(processed);
-            if (ConversionActivity.DEBUG_FLAG) Log.d("SegmentQueue", "Left to process: " + (SEGMENTS_TO_PROCESS - processed));
+            if (ConversionActivity.DEBUG_FLAG)
+                Log.d("SegmentQueue", "Left to process: " + (SEGMENTS_TO_PROCESS - processed));
             /* SLEEP */
             try {
                 long randomSleepTime = MetagenomixUtil.getRandomLongWithLimit(3 * 1000);

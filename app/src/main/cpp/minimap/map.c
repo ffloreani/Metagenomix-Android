@@ -1,5 +1,4 @@
 #include <stdlib.h>
-#include <string.h>
 #include <stdio.h>
 #include <android/log.h>
 #include "bseq.h"
@@ -302,6 +301,10 @@ void kt_for(int n_threads, void (*func)(void *, long, int), void *data, long n);
 
 void kt_pipeline(int n_threads, void *(*func)(void *, int, void *), void *shared_data, int n_steps);
 
+void
+kt_pipeline_output(int n_threads, void *(*func)(void *, int, void *, FILE *), void *shared_data,
+                   int n_steps, FILE *output_fp);
+
 typedef struct {
     int batch_size, n_processed, n_threads;
     const mm_mapopt_t *opt;
@@ -390,6 +393,74 @@ static void *worker_pipeline(void *shared, int step, void *in) {
     return 0;
 }
 
+static void *worker_pipeline_output(void *shared, int step, void *in, FILE *output_fp) {
+    int i, j;
+    pipeline_t *p = (pipeline_t *) shared;
+    if (step == 0) { // step 0: read sequences
+        step_t *s;
+        s = (step_t *) calloc(1, sizeof(step_t));
+        s->seq = bseq_read(p->fp, p->batch_size, &s->n_seq);
+        if (s->seq) {
+            s->p = p;
+            for (i = 0; i < s->n_seq; ++i)
+                s->seq[i].rid = p->n_processed++;
+            s->buf = (mm_tbuf_t **) calloc(p->n_threads, sizeof(mm_tbuf_t *));
+            for (i = 0; i < p->n_threads; ++i)
+                s->buf[i] = mm_tbuf_init();
+            s->n_reg = (int *) calloc(s->n_seq, sizeof(int));
+            s->reg = (mm_reg1_t **) calloc(s->n_seq, sizeof(mm_reg1_t *));
+            return s;
+        } else free(s);
+    } else if (step == 1) { // step 1: map
+        kt_for(p->n_threads, worker_for, in, ((step_t *) in)->n_seq);
+        return in;
+    } else if (step == 2) { // step 2: output
+        step_t *s = (step_t *) in;
+        const mm_idx_t *mi = p->mi;
+        for (i = 0; i < p->n_threads; ++i) mm_tbuf_destroy(s->buf[i]);
+        free(s->buf);
+        for (i = 0; i < s->n_seq; ++i) {
+            bseq1_t *t = &s->seq[i];
+            for (j = 0; j < s->n_reg[i]; ++j) {
+                mm_reg1_t *r = &s->reg[i][j];
+                if (r->len < p->opt->min_match) continue;
+
+                fprintf(output_fp, "%s\t%d\t%d\t%d\t%c\t", t->name, t->l_seq, r->qs, r->qe,
+                        "+-"[r->rev]);
+                __android_log_print(ANDROID_LOG_VERBOSE, DEBUG_TAG, "%s\t%d\t%d\t%d\t%c\t", t->name,
+                                    t->l_seq, r->qs, r->qe, "+-"[r->rev]);
+
+                if (mi->name) {
+                    fprintf(output_fp, "%s", mi->name[r->rid]);
+                    __android_log_print(ANDROID_LOG_VERBOSE, DEBUG_TAG, "%s", mi->name[r->rid]);
+                } else {
+                    fprintf(output_fp, "%d", r->rid + 1);
+                    __android_log_print(ANDROID_LOG_VERBOSE, DEBUG_TAG, "%d", r->rid + 1);
+                }
+
+                fprintf(output_fp, "\t%d\t%d\t%d\t%d\t%d\t255\tcm:i:%d\n", mi->len[r->rid], r->rs,
+                        r->re,
+                        r->len, r->re - r->rs > r->qe - r->qs ? r->re - r->rs : r->qe - r->qs,
+                        r->cnt);
+                __android_log_print(ANDROID_LOG_VERBOSE, DEBUG_TAG,
+                                    "\t%d\t%d\t%d\t%d\t%d\t255\tcm:i:%d\n", mi->len[r->rid], r->rs,
+                                    r->re,
+                                    r->len,
+                                    r->re - r->rs > r->qe - r->qs ? r->re - r->rs : r->qe - r->qs,
+                                    r->cnt);
+            }
+            free(s->reg[i]);
+            free(s->seq[i].seq);
+            free(s->seq[i].name);
+        }
+        free(s->reg);
+        free(s->n_reg);
+        free(s->seq);
+        free(s);
+    }
+    return 0;
+}
+
 int mm_map_file(const mm_idx_t *idx, const char *fn, const mm_mapopt_t *opt, int n_threads,
                 int tbatch_size) {
     pipeline_t pl;
@@ -404,14 +475,14 @@ int mm_map_file(const mm_idx_t *idx, const char *fn, const mm_mapopt_t *opt, int
 }
 
 int mm_map_file_output(const mm_idx_t *idx, const char *fn, const mm_mapopt_t *opt, int n_threads,
-                int tbatch_size, FILE* output_fp) {
+                       int tbatch_size, FILE *output_fp) {
     pipeline_t pl;
     memset(&pl, 0, sizeof(pipeline_t));
     pl.fp = bseq_open(fn);
     if (pl.fp == 0) return -1;
     pl.opt = opt, pl.mi = idx;
     pl.n_threads = n_threads, pl.batch_size = tbatch_size;
-    kt_pipeline(n_threads == 1 ? 1 : 2, worker_pipeline, &pl, 3);
+    kt_pipeline_output(n_threads == 1 ? 1 : 2, worker_pipeline_output, &pl, 3, output_fp);
     bseq_close(pl.fp);
     return 0;
 }

@@ -1,6 +1,6 @@
 #include <pthread.h>
 #include <stdlib.h>
-#include <limits.h>
+#include <stdio.h>
 
 /************
  * kt_for() *
@@ -35,7 +35,7 @@ static inline long steal_work(kt_for_t *t) {
 static void *ktf_worker(void *data) {
     ktf_worker_t *w = (ktf_worker_t *) data;
     long i;
-    for (; ;) {
+    for (;;) {
         i = __sync_fetch_and_add(&w->i, w->t->n_threads);
         if (i >= w->t->n) break;
         w->t->func(w->t->data, i, w - w->t->w);
@@ -69,12 +69,13 @@ typedef struct {
     int64_t index;
     int step;
     void *data;
+    FILE *output_fp;
 } ktp_worker_t;
 
 typedef struct ktp_t {
     void *shared;
 
-    void *(*func)(void *, int, void *);
+    void *(*func)(void *, int, void *, FILE *);
 
     int64_t index;
     int n_workers, n_steps;
@@ -89,7 +90,7 @@ static void *ktp_worker(void *data) {
     while (w->step < p->n_steps) {
         // test whether we can kick off the job with this worker
         pthread_mutex_lock(&p->mutex);
-        for (; ;) {
+        for (;;) {
             int i;
             // test whether another worker is doing the same step
             for (i = 0; i < p->n_workers; ++i) {
@@ -105,7 +106,7 @@ static void *ktp_worker(void *data) {
 
         // working on w->step
         w->data = p->func(p->shared, w->step,
-                          w->step ? w->data : 0); // for the first step, input is NULL
+                          w->step ? w->data : 0, w->output_fp); // for the first step, input is NULL
 
         // update step and let other workers know
         pthread_mutex_lock(&p->mutex);
@@ -139,6 +140,40 @@ void kt_pipeline(int n_threads, void *(*func)(void *, int, void *), void *shared
         w->pl = &aux;
         w->data = 0;
         w->index = aux.index++;
+    }
+
+    tid = (pthread_t *) alloca(n_threads * sizeof(pthread_t));
+    for (i = 0; i < n_threads; ++i) pthread_create(&tid[i], 0, ktp_worker, &aux.workers[i]);
+    for (i = 0; i < n_threads; ++i) pthread_join(tid[i], 0);
+
+    pthread_mutex_destroy(&aux.mutex);
+    pthread_cond_destroy(&aux.cv);
+}
+
+void
+kt_pipeline_output(int n_threads, void *(*func)(void *, int, void *, FILE *), void *shared_data,
+                   int n_steps, FILE *output_fp) {
+    ktp_t aux;
+    pthread_t *tid;
+    int i;
+
+    if (n_threads < 1) n_threads = 1;
+    aux.n_workers = n_threads;
+    aux.n_steps = n_steps;
+    aux.func = func;
+    aux.shared = shared_data;
+    aux.index = 0;
+    pthread_mutex_init(&aux.mutex, 0);
+    pthread_cond_init(&aux.cv, 0);
+
+    aux.workers = (ktp_worker_t *) alloca(n_threads * sizeof(ktp_worker_t));
+    for (i = 0; i < n_threads; ++i) {
+        ktp_worker_t *w = &aux.workers[i];
+        w->step = 0;
+        w->pl = &aux;
+        w->data = 0;
+        w->index = aux.index++;
+        w->output_fp = output_fp;
     }
 
     tid = (pthread_t *) alloca(n_threads * sizeof(pthread_t));

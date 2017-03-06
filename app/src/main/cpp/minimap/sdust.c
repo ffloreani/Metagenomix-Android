@@ -1,6 +1,5 @@
 #include <string.h>
 #include <stdint.h>
-#include <stdio.h>
 #include "kdq.h"
 #include "kvec.h"
 #include "sdust.h"

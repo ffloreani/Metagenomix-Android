@@ -1,7 +1,6 @@
 package com.metagenomix.android.activities;
 
 import android.content.Context;
-import android.content.res.AssetManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
@@ -99,25 +98,12 @@ public class ConversionActivity extends AppCompatActivity {
 
     @OnClick(R.id.results)
     public void onResultsClick() {
-//        if (!isQueued) {
-//            showAlertConverted("Segments are still being queued, please hold");
-//            return;
-//        }
-//
-//        Intent intent = new Intent(this, LoadDataActivity.class);
-//        startActivity(intent);
-//        Thread thread = new Thread(new Runnable() {
-//            @Override
-//            public void run() {
-//                map2(ConversionActivity.this.getAssets(), "environment_sample", "database");
-//            }
-//        });
-
-        // copy files from res/raw to internal storage folder
+        // copy files from /assets to internal storage folder
         try {
             MetagenomixUtil.copyDirOrFileFromAssetManager("", "Metagenomix");
         } catch (IOException e) {
             e.printStackTrace();
+            return;
         }
 
         final File localStorageDir = getDir("Metagenomix", Context.MODE_PRIVATE);
@@ -126,13 +112,13 @@ public class ConversionActivity extends AppCompatActivity {
         final File databaseLocal = new File(localStorageDir, "database.txt");
         final File outputLocal = new File(localStorageDir, "minimap_out.txt");
 
-        Thread thread2 = new Thread(new Runnable() {
+        Thread thread = new Thread(new Runnable() {
             @Override
             public void run() {
                 map(sampleLocal.getPath(), databaseLocal.getPath(), outputLocal.getPath());
             }
         });
-        thread2.start();
+        thread.start();
     }
 
     private void showAlertConverted(String message) {

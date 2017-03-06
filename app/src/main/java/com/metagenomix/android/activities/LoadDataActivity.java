@@ -1,6 +1,5 @@
 package com.metagenomix.android.activities;
 
-import android.app.ProgressDialog;
 import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -10,10 +9,8 @@ import android.support.v4.app.NavUtils;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.MenuItem;
-import android.widget.Toast;
 
 import com.github.mikephil.charting.charts.PieChart;
-import com.github.mikephil.charting.components.Description;
 import com.github.mikephil.charting.components.Legend;
 import com.github.mikephil.charting.data.PieData;
 import com.github.mikephil.charting.data.PieDataSet;
@@ -25,16 +22,11 @@ import com.metagenomix.android.processing.MinimapProcessing;
 import com.metagenomix.android.util.DatabaseManager;
 import com.metagenomix.android.util.RecursiveFileObserver;
 
-import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.HashMap;
 import java.util.Map;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -42,15 +34,10 @@ import java.util.TimerTask;
 public class LoadDataActivity extends AppCompatActivity {
 
     PieChart pieChart;
-    Map<String, Float> map = new HashMap<>();
     DatabaseManager db = new DatabaseManager(this);
 
     public static FileObserver observer;
     public long timeLastModified;
-    public InputStream inputStream;
-    public InputStreamReader inputStreamReader;
-    public BufferedReader bufferedReader;
-    public ProgressDialog progress;
     public MinimapProcessing processing;
     public Map<String, Float> scores;
     public TimerTask task;
@@ -60,10 +47,9 @@ public class LoadDataActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_load_data);
 
-        File file = this.getDir("Metagenomix", Context.MODE_PRIVATE);
-        String output = new File(file, "ispis.txt").getAbsolutePath();
+        File internalStorageDir = this.getDir("Metagenomix", Context.MODE_PRIVATE);
         //Edit this string to observer from graph map output
-        String filename = "/ispis.txt";
+        String filename = "/minimap_out.txt";
 
         try {
             processing = new MinimapProcessing(this);
@@ -89,7 +75,7 @@ public class LoadDataActivity extends AppCompatActivity {
         setRepeatingAsyncTask();
     }
 
-   private void setRepeatingAsyncTask() {
+    private void setRepeatingAsyncTask() {
 
         final Handler handler = new Handler();
         Timer timer = new Timer();
@@ -101,7 +87,7 @@ public class LoadDataActivity extends AppCompatActivity {
                     public void run() {
                         try {
                             long time = System.currentTimeMillis();
-                            if(time - timeLastModified > 10000) {
+                            if (time - timeLastModified > 10000) {
                                 try {
                                     mappingEnded();
                                 } catch (IOException exc) {

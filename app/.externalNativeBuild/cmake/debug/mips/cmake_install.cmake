@@ -44,6 +44,7 @@ endif()
 
 if("${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/metagenomix" TYPE FILE FILES
+    "/Users/filipfloreani/Development/Android/Metagenomix/app/src/main/cpp/minimap/asset_to_file.h"
     "/Users/filipfloreani/Development/Android/Metagenomix/app/src/main/cpp/minimap/bseq.h"
     "/Users/filipfloreani/Development/Android/Metagenomix/app/src/main/cpp/minimap/kdq.h"
     "/Users/filipfloreani/Development/Android/Metagenomix/app/src/main/cpp/minimap/khash.h"

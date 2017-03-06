@@ -17,7 +17,7 @@ import java.util.Vector;
 /**
  * Processes the environment sample FASTA file located at 'res/raw/environment_sample.txt'
  * and creates DNA sequences for further processing.
- *
+ * <p>
  * Created by filipfloreani on 05/12/2016.
  */
 public abstract class SequenceConverter {
@@ -63,7 +63,8 @@ public abstract class SequenceConverter {
             try {
                 is.close();
                 reader.close();
-            } catch (IOException ignored) {}
+            } catch (IOException ignored) {
+            }
         }
 
         return true;

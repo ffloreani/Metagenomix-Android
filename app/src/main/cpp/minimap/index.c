@@ -148,12 +148,13 @@ static void mm_idx_post(mm_idx_t *mi, int n_threads) {
  * Generate index *
  ******************/
 
-#include <string.h>
-#include <zlib.h>
 #include <android/log.h>
-#include "bseq.h"
 
 void kt_pipeline(int n_threads, void *(*func)(void *, int, void *), void *shared_data, int n_steps);
+
+void
+kt_pipeline_output(int n_threads, void *(*func)(void *, int, void *, FILE *), void *shared_data,
+                   int n_steps, FILE *output_fp);
 
 typedef struct {
     int tbatch_size, n_processed, keep_name;
@@ -226,6 +227,56 @@ static void *worker_pipeline(void *shared, int step, void *in) {
     return 0;
 }
 
+static void *worker_pipeline_o(void *shared, int step, void *in, FILE *output_fp) {
+    int i;
+    pipeline_t *p = (pipeline_t *) shared;
+    if (step == 0) { // step 0: read sequences
+        step_t *s;
+        if (p->n_read > p->ibatch_size) return 0;
+        s = (step_t *) calloc(1, sizeof(step_t));
+        s->seq = bseq_read(p->fp, p->tbatch_size, &s->n_seq);
+        if (s->seq) {
+            uint32_t old_m = p->mi->n, m, n;
+            assert((uint64_t) p->n_processed + s->n_seq <= INT32_MAX);
+            m = n = p->mi->n + s->n_seq;
+            kroundup32(m);
+            kroundup32(old_m);
+            if (old_m != m) {
+                if (p->keep_name)
+                    p->mi->name = (char **) realloc(p->mi->name, m * sizeof(char *));
+                p->mi->len = (int *) realloc(p->mi->len, m * sizeof(int));
+            }
+            for (i = 0; i < s->n_seq; ++i) {
+                if (p->keep_name) {
+                    assert(strlen(s->seq[i].name) <= 254);
+                    p->mi->name[p->mi->n] = strdup(s->seq[i].name);
+                }
+                p->mi->len[p->mi->n++] = s->seq[i].l_seq;
+                s->seq[i].rid = p->n_processed++;
+                p->n_read += s->seq[i].l_seq;
+            }
+            return s;
+        } else free(s);
+    } else if (step == 1) { // step 1: compute sketch
+        step_t *s = (step_t *) in;
+        for (i = 0; i < s->n_seq; ++i) {
+            bseq1_t *t = &s->seq[i];
+            mm_sketch(t->seq, t->l_seq, p->mi->w, p->mi->k, t->rid, &s->a);
+            free(t->seq);
+            free(t->name);
+        }
+        free(s->seq);
+        s->seq = 0;
+        return s;
+    } else if (step == 2) { // dispatch sketch to buckets
+        step_t *s = (step_t *) in;
+        mm_idx_add(p->mi, s->a.n, s->a.a);
+        free(s->a.a);
+        free(s);
+    }
+    return 0;
+}
+
 mm_idx_t *mm_idx_gen(bseq_file_t *fp, int w, int k, int b, int tbatch_size, int n_threads,
                      uint64_t ibatch_size, int keep_name) {
     pipeline_t pl;
@@ -239,19 +290,21 @@ mm_idx_t *mm_idx_gen(bseq_file_t *fp, int w, int k, int b, int tbatch_size, int 
 
     kt_pipeline(n_threads < 3 ? n_threads : 3, worker_pipeline, &pl, 3);
     if (mm_verbose >= 3)
-        __android_log_print(ANDROID_LOG_VERBOSE, "Indexing", "[M::%s::%.3f*%.2f] collected minimizers\n", __func__,
-                realtime() - mm_realtime0, cputime() / (realtime() - mm_realtime0));
+        __android_log_print(ANDROID_LOG_VERBOSE, "Indexing",
+                            "[M::%s::%.3f*%.2f] collected minimizers\n", __func__,
+                            realtime() - mm_realtime0, cputime() / (realtime() - mm_realtime0));
 
     mm_idx_post(pl.mi, n_threads);
     if (mm_verbose >= 3)
-        __android_log_print(ANDROID_LOG_VERBOSE, "Indexing", "[M::%s::%.3f*%.2f] sorted minimizers\n", __func__,
-                realtime() - mm_realtime0, cputime() / (realtime() - mm_realtime0));
+        __android_log_print(ANDROID_LOG_VERBOSE, "Indexing",
+                            "[M::%s::%.3f*%.2f] sorted minimizers\n", __func__,
+                            realtime() - mm_realtime0, cputime() / (realtime() - mm_realtime0));
 
     return pl.mi;
 }
 
 mm_idx_t *mm_idx_gen_output(bseq_file_t *fp, int w, int k, int b, int tbatch_size, int n_threads,
-                     uint64_t ibatch_size, int keep_name, FILE* output_fp) {
+                            uint64_t ibatch_size, int keep_name, FILE *output_fp) {
     pipeline_t pl;
     memset(&pl, 0, sizeof(pipeline_t));
     pl.tbatch_size = tbatch_size;
@@ -261,14 +314,16 @@ mm_idx_t *mm_idx_gen_output(bseq_file_t *fp, int w, int k, int b, int tbatch_siz
     if (pl.fp == 0) return 0;
     pl.mi = mm_idx_init(w, k, b);
 
-    kt_pipeline(n_threads < 3 ? n_threads : 3, worker_pipeline, &pl, 3);
+    kt_pipeline_output(n_threads < 3 ? n_threads : 3, worker_pipeline_o, &pl, 3, output_fp);
     if (mm_verbose >= 3)
-        __android_log_print(ANDROID_LOG_VERBOSE, "Indexing", "[M::%s::%.3f*%.2f] collected minimizers\n", __func__,
+        __android_log_print(ANDROID_LOG_VERBOSE, "Indexing",
+                            "[M::%s::%.3f*%.2f] collected minimizers\n", __func__,
                             realtime() - mm_realtime0, cputime() / (realtime() - mm_realtime0));
 
     mm_idx_post(pl.mi, n_threads);
     if (mm_verbose >= 3)
-        __android_log_print(ANDROID_LOG_VERBOSE, "Indexing", "[M::%s::%.3f*%.2f] sorted minimizers\n", __func__,
+        __android_log_print(ANDROID_LOG_VERBOSE, "Indexing",
+                            "[M::%s::%.3f*%.2f] sorted minimizers\n", __func__,
                             realtime() - mm_realtime0, cputime() / (realtime() - mm_realtime0));
 
     return pl.mi;

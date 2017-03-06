@@ -6,7 +6,6 @@ import android.content.res.AssetManager;
 import android.support.v7.app.AlertDialog;
 
 import com.metagenomix.android.MetagenomixApplication;
-import com.metagenomix.android.activities.ConversionActivity;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -38,7 +37,8 @@ public class MetagenomixUtil {
         adBuilder.setTitle("Alert")
                 .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
                     @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {}
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                    }
                 });
 
         return adBuilder;
@@ -51,7 +51,7 @@ public class MetagenomixUtil {
         String[] files = assetManager.list(assetDir);
 
         for (String file : files) {
-            if(!file.endsWith(".txt")) continue;
+            if (!file.endsWith(".txt")) continue;
             File destFile = new File(localStorageDir, file);
             copyAssetFile(file, destFile);
         }

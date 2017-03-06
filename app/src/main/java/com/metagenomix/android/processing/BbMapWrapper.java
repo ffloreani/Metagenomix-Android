@@ -36,7 +36,7 @@ public class BbMapWrapper {
             BufferedReader bf = new BufferedReader(new InputStreamReader(context.getAssets().open("graph_map_output_example.txt")));
             String line = "";
             while ((line = bf.readLine()) != null) {
-                if(line.trim().length() == 0 || line.startsWith("@")) {
+                if (line.trim().length() == 0 || line.startsWith("@")) {
                     continue;
                 }
                 // TODO: bbMapWrapper.py; line 27; how to call utility_sam.SamLine(line)?
@@ -45,11 +45,11 @@ public class BbMapWrapper {
                 //scores.add(Math.round(samLine.mapq));
                 //mapQScores.put(samLine.qname, scores);
             }
-            for(String key: mapQScores.keySet()) {
+            for (String key : mapQScores.keySet()) {
                 List<Float> keyScores = mapQScores.get(key);
                 float finalScore = 0.0f;
                 float sum = 0.0f;
-                for(float score: keyScores) {
+                for (float score : keyScores) {
                     sum += score;
                 }
                 finalScore = (sum / keyScores.size() * 1.0f);
@@ -71,7 +71,7 @@ public class BbMapWrapper {
     }
 
     public boolean findEntryScoreSkipFlag(double pScore, double pScoreCutOff) {
-        if(pScore < pScoreCutOff)
+        if (pScore < pScoreCutOff)
             return true;
         return false;
     }
@@ -84,8 +84,8 @@ public class BbMapWrapper {
             scalingFactor = 1.0 / maxScore;
         }
 
-        for(int rIdx: U.keySet()) {
-            if(minScore < 0) {
+        for (int rIdx : U.keySet()) {
+            if (minScore < 0) {
                 double value = U.get(rIdx).get(1) - minScore;
                 List<Double> keyList = U.get(rIdx);
                 keyList.add(1, value);
@@ -108,15 +108,15 @@ public class BbMapWrapper {
             scalingFactor = 1.0 / maxScore;
         }
 
-        for(int rIdx: NU.keySet()) {
+        for (int rIdx : NU.keySet()) {
 
             NU.get(rIdx).get(3).set(0, 0.0);
-            for(int i=0; i< NU.get(rIdx).get(1).size(); i++) {
-                if(minScore < 0) {
+            for (int i = 0; i < NU.get(rIdx).get(1).size(); i++) {
+                if (minScore < 0) {
                     NU.get(rIdx).get(1).set(i, NU.get(rIdx).get(1).get(i) - minScore);
                 }
                 NU.get(rIdx).get(1).set(i, Math.exp(NU.get(rIdx).get(1).get(i) * scalingFactor));
-                if(NU.get(rIdx).get(1).get(i) > NU.get(rIdx).get(3).get(0)) {
+                if (NU.get(rIdx).get(1).get(i) > NU.get(rIdx).get(3).get(0)) {
                     NU.get(rIdx).get(3).set(0, NU.get(rIdx).get(1).get(i));
                 }
             }
@@ -165,11 +165,11 @@ public class BbMapWrapper {
                     }
                     List<String> l = new ArrayList<String>(Arrays.asList(line.split("\\t")));
                     String readId = l.get(0);
-                    if(Integer.parseInt(l.get(1)) == 4) {
+                    if (Integer.parseInt(l.get(1)) == 4) {
                         continue;
                     }
                     String refId = l.get(2);
-                    if(refId.equals('*')) {
+                    if (refId.equals('*')) {
                         continue;
                     }
                     String ref = refId;
@@ -185,47 +185,47 @@ public class BbMapWrapper {
                     cn += 1;
 
                     List<String> arsList = new ArrayList<String>(Arrays.asList(ars.split(",")));
-                    for(String c: arsList) {
+                    for (String c : arsList) {
                         String refId2 = "ti|" + c;
                         double pScore = findEntryScore(l, pScoreCutOff);
                         boolean skipFlag = findEntryScoreSkipFlag(pScore, pScoreCutOff);
-                        if(skipFlag){
+                        if (skipFlag) {
                             continue;
                         }
-                        if(new Double(maxScore) == null | pScore > maxScore) {
+                        if (new Double(maxScore) == null | pScore > maxScore) {
                             maxScore = pScore;
                         }
-                        if(new Double(minScore) == null | pScore < minScore) {
+                        if (new Double(minScore) == null | pScore < minScore) {
                             minScore = pScore;
                         }
                         Integer gIdx;
-                        if(hRefId.get(refId2) != null) {
+                        if (hRefId.get(refId2) != null) {
                             gIdx = hRefId.get(refId2);
                         } else {
                             gIdx = -1;
                         }
                         Map<String, List<Double>> ds = coverage.get(refId2);
-                        if(ds.isEmpty()) {
+                        if (ds.isEmpty()) {
                             ds = new HashMap<>();
                         }
                         List<Double> ls = ds.get(gi);
-                        if(ls.isEmpty()) {
+                        if (ls.isEmpty()) {
                             ls = new ArrayList<>();
                         }
                         ds.put(refId2, ls);
                         coverage.put(refId2, ds);
 
-                        if(gIdx == -1) {
+                        if (gIdx == -1) {
                             gIdx = gCnt;
                             hRefId.put(refId2, gIdx);
                             genomes.add(refId2);
                             gCnt += 1;
                         }
                         int rIdx = hReadId.get(readId);
-                        if(new Integer(rIdx) == null) {
+                        if (new Integer(rIdx) == null) {
                             rIdx = -1;
                         }
-                        if(rIdx == -1) {
+                        if (rIdx == -1) {
                             rIdx = rCnt;
                             hReadId.put(readId, rIdx);
                             read.add(readId);
@@ -237,7 +237,7 @@ public class BbMapWrapper {
                             URIdx.add(pScore);
                             U.put(rIdx, URIdx);
                         } else {
-                            if(U.containsKey(rIdx)) {
+                            if (U.containsKey(rIdx)) {
                                 if (U.get(rIdx).get(0) == (double) gIdx) {
                                     continue;
                                 }
@@ -246,23 +246,23 @@ public class BbMapWrapper {
                                 NU.put(rIdx, NUList);
                                 U.remove(rIdx);
                             }
-                            if(NU.get(rIdx).get(0).contains((double) gIdx)) {
+                            if (NU.get(rIdx).get(0).contains((double) gIdx)) {
                                 continue;
                             }
                             NU.get(rIdx).get(0).add((double) gIdx);
                             NU.get(rIdx).get(1).add(pScore);
 
-                            if(pScore > NU.get(rIdx).get(3).get(0)) {
+                            if (pScore > NU.get(rIdx).get(3).get(0)) {
                                 NU.get(rIdx).get(3).set(0, pScore);
                             }
                         }
                     }
                 }
-                if(new Double(maxScore) != null && new Double(minScore) != null) {
+                if (new Double(maxScore) != null && new Double(minScore) != null) {
                     U = rescaleSamScoreU(U, maxScore, minScore);
                     NU = rescaleSamScoreNU(NU, maxScore, minScore);
                 }
-                for(int rIdx: U.keySet()) {
+                for (int rIdx : U.keySet()) {
 
                 }
             } catch (Exception e) {
