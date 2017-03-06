@@ -35,7 +35,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         ButterKnife.bind(this);
     }
 
@@ -70,10 +69,10 @@ public class MainActivity extends AppCompatActivity {
     private void writeGraphOutputTest() {
 
         try {
-            FileOutputStream fos = openFileOutput("graph.txt", Context.MODE_PRIVATE);
+            FileOutputStream fos = openFileOutput("ispis.txt", Context.MODE_PRIVATE);
             PrintWriter printWriter = new PrintWriter(new OutputStreamWriter(fos));
 
-            BufferedReader bf = new BufferedReader(new InputStreamReader(getAssets().open("graph_map_output_example.txt")));
+            BufferedReader bf = new BufferedReader(new InputStreamReader(getAssets().open("minimap_output.txt")));
             String str = "";
             while ((str = bf.readLine()) != null) {
                 printWriter.println(str);
@@ -84,28 +83,4 @@ public class MainActivity extends AppCompatActivity {
             Log.d(TAG, "Error while writing to file.");
         }
     }
-
-    /*REMOVE TESTING METHODS
-    private void writeToFile() {
-        List<Integer> numbers = new ArrayList<>();
-
-        //fill list with 50 random numbers in range [1,5]
-        for(int i=0; i<50; i++) {
-            int number = 1 + (int)(Math.random() * ((5 - 1) + 1));
-            numbers.add(number);
-        }
-        try {
-            FileOutputStream fos = openFileOutput("numbers.txt", Context.MODE_PRIVATE);
-            PrintWriter printWriter = new PrintWriter(new OutputStreamWriter(fos));
-            for(int number: numbers) {
-                printWriter.println(String.valueOf(number));
-            }
-            printWriter.close();
-        } catch (Exception exc) {
-            Log.d(TAG, "Error while writing to file.");
-        }
-
-    }*/
-
-
 }

@@ -3,6 +3,7 @@ package com.metagenomix.android.activities;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 
 import com.github.mikephil.charting.charts.PieChart;
 import com.github.mikephil.charting.components.Legend;
@@ -36,16 +37,14 @@ public class GraphActivity extends AppCompatActivity {
             pieEntries.add(new PieEntry(entry.getValue(), entry.getKey()));
         }
 
-        PieDataSet pieDataSet = new PieDataSet(pieEntries, "data");
+        PieDataSet pieDataSet = new PieDataSet(pieEntries, "");
         pieDataSet.setSliceSpace(2);
         pieDataSet.setValueTextSize(12);
 
         ArrayList<Integer> colors = new ArrayList<>();
         colors.add(Color.GRAY);
-        colors.add(android.R.color.holo_red_dark);
+        colors.add(Color.RED);
         colors.add(Color.BLUE);
-        colors.add(Color.GREEN);
-        colors.add(Color.MAGENTA);
 
         pieDataSet.setColors(colors);
 

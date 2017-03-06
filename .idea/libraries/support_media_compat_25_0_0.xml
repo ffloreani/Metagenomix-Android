@@ -1,16 +1,12 @@
 <component name="libraryTable">
   <library name="support-media-compat-25.0.0">
-    <ANNOTATIONS>
-      <root url="jar://$PROJECT_DIR$/app/build/intermediates/exploded-aar/com.android.support/support-media-compat/25.0.0/annotations.zip!/" />
-    </ANNOTATIONS>
     <CLASSES>
-      <root url="file://$USER_HOME$/.android/build-cache/2d7c80053373b3b7b6fb09300ae22b1760809b2e/output/res" />
-      <root url="jar://$USER_HOME$/.android/build-cache/2d7c80053373b3b7b6fb09300ae22b1760809b2e/output/jars/libs/internal_impl-25.0.0.jar!/" />
-      <root url="jar://$USER_HOME$/.android/build-cache/2d7c80053373b3b7b6fb09300ae22b1760809b2e/output/jars/classes.jar!/" />
+      <root url="jar://$USER_HOME$/.android/build-cache/0f90cad4344a9048ec1677c1296988af748ea679/output/jars/libs/internal_impl-25.0.0.jar!/" />
+      <root url="file://$USER_HOME$/.android/build-cache/0f90cad4344a9048ec1677c1296988af748ea679/output/res" />
+      <root url="jar://$USER_HOME$/.android/build-cache/0f90cad4344a9048ec1677c1296988af748ea679/output/jars/classes.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>
-      <root url="jar://$USER_HOME$/Library/Android/sdk/extras/android/m2repository/com/android/support/support-media-compat/25.0.0/support-media-compat-25.0.0-sources.jar!/" />
       <root url="jar://$USER_HOME$/Android/Sdk/extras/android/m2repository/com/android/support/support-media-compat/25.0.0/support-media-compat-25.0.0-sources.jar!/" />
     </SOURCES>
   </library>
