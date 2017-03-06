@@ -22,6 +22,7 @@ static fpos_t android_seek(void *cookie, fpos_t offset, int whence) {
 }
 
 static int android_close(void *cookie) {
+    if (cookie == NULL) return 0;
     AAsset_close((AAsset *) cookie);
     return 0;
 }

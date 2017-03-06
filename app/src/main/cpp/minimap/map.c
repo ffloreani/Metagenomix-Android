@@ -390,21 +390,21 @@ static void *worker_pipeline(void *shared, int step, void *in) {
     return 0;
 }
 
-int mm_map_file_pointer(const mm_idx_t *idx, FILE *sample_fp, const mm_mapopt_t *opt, int n_threads,
-                        int tbatch_size) {
+int mm_map_file(const mm_idx_t *idx, const char *fn, const mm_mapopt_t *opt, int n_threads,
+                int tbatch_size) {
     pipeline_t pl;
     memset(&pl, 0, sizeof(pipeline_t));
-    pl.fp = bseq_file_open(sample_fp);
+    pl.fp = bseq_open(fn);
     if (pl.fp == 0) return -1;
     pl.opt = opt, pl.mi = idx;
     pl.n_threads = n_threads, pl.batch_size = tbatch_size;
     kt_pipeline(n_threads == 1 ? 1 : 2, worker_pipeline, &pl, 3);
-    bseq_file_close(pl.fp);
+    bseq_close(pl.fp);
     return 0;
 }
 
-int mm_map_file(const mm_idx_t *idx, const char *fn, const mm_mapopt_t *opt, int n_threads,
-                int tbatch_size) {
+int mm_map_file_output(const mm_idx_t *idx, const char *fn, const mm_mapopt_t *opt, int n_threads,
+                int tbatch_size, FILE* output_fp) {
     pipeline_t pl;
     memset(&pl, 0, sizeof(pipeline_t));
     pl.fp = bseq_open(fn);

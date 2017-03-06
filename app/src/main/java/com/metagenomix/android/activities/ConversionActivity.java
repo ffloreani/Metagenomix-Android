@@ -1,5 +1,6 @@
 package com.metagenomix.android.activities;
 
+import android.content.Context;
 import android.content.res.AssetManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -18,6 +19,9 @@ import com.metagenomix.android.processing.QueueFeeder;
 import com.metagenomix.android.processing.SequenceConverter;
 import com.metagenomix.android.util.MetagenomixUtil;
 
+import java.io.File;
+import java.io.IOException;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -30,7 +34,7 @@ public class ConversionActivity extends AppCompatActivity {
     public boolean isConverted = false;
     private Handler feederHandler;
 
-    public native void map(AssetManager am, String samplePath, String databasePath);
+    public native void map(String sampleName, String databaseName, String outputPath);
 
     @BindView(R.id.status)
     TextView statusView;
@@ -102,13 +106,33 @@ public class ConversionActivity extends AppCompatActivity {
 //
 //        Intent intent = new Intent(this, LoadDataActivity.class);
 //        startActivity(intent);
-        Thread thread = new Thread(new Runnable() {
+//        Thread thread = new Thread(new Runnable() {
+//            @Override
+//            public void run() {
+//                map2(ConversionActivity.this.getAssets(), "environment_sample", "database");
+//            }
+//        });
+
+        // copy files from res/raw to internal storage folder
+        try {
+            MetagenomixUtil.copyDirOrFileFromAssetManager("", "Metagenomix");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        final File localStorageDir = getDir("Metagenomix", Context.MODE_PRIVATE);
+
+        final File sampleLocal = new File(localStorageDir, "environment_sample.txt");
+        final File databaseLocal = new File(localStorageDir, "database.txt");
+        final File outputLocal = new File(localStorageDir, "minimap_out.txt");
+
+        Thread thread2 = new Thread(new Runnable() {
             @Override
             public void run() {
-                map(ConversionActivity.this.getAssets(), "environment_sample.txt", "database.txt");
+                map(sampleLocal.getPath(), databaseLocal.getPath(), outputLocal.getPath());
             }
         });
-        thread.start();
+        thread2.start();
     }
 
     private void showAlertConverted(String message) {

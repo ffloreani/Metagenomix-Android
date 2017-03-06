@@ -250,6 +250,30 @@ mm_idx_t *mm_idx_gen(bseq_file_t *fp, int w, int k, int b, int tbatch_size, int 
     return pl.mi;
 }
 
+mm_idx_t *mm_idx_gen_output(bseq_file_t *fp, int w, int k, int b, int tbatch_size, int n_threads,
+                     uint64_t ibatch_size, int keep_name, FILE* output_fp) {
+    pipeline_t pl;
+    memset(&pl, 0, sizeof(pipeline_t));
+    pl.tbatch_size = tbatch_size;
+    pl.keep_name = keep_name;
+    pl.ibatch_size = ibatch_size;
+    pl.fp = fp;
+    if (pl.fp == 0) return 0;
+    pl.mi = mm_idx_init(w, k, b);
+
+    kt_pipeline(n_threads < 3 ? n_threads : 3, worker_pipeline, &pl, 3);
+    if (mm_verbose >= 3)
+        __android_log_print(ANDROID_LOG_VERBOSE, "Indexing", "[M::%s::%.3f*%.2f] collected minimizers\n", __func__,
+                            realtime() - mm_realtime0, cputime() / (realtime() - mm_realtime0));
+
+    mm_idx_post(pl.mi, n_threads);
+    if (mm_verbose >= 3)
+        __android_log_print(ANDROID_LOG_VERBOSE, "Indexing", "[M::%s::%.3f*%.2f] sorted minimizers\n", __func__,
+                            realtime() - mm_realtime0, cputime() / (realtime() - mm_realtime0));
+
+    return pl.mi;
+}
+
 mm_idx_t *mm_idx_build(const char *fn, int w, int k, int n_threads) // a simpler interface
 {
     bseq_file_t *fp;

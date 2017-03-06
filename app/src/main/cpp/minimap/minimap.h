@@ -73,6 +73,7 @@ void mm_sketch(const char *str, int len, int w, int k, uint32_t rid, mm128_v *p)
 mm_idx_t *mm_idx_init(int w, int k, int b);
 void mm_idx_destroy(mm_idx_t *mi);
 mm_idx_t *mm_idx_gen(bseq_file_t *fp, int w, int k, int b, int tbatch_size, int n_threads, uint64_t ibatch_size, int keep_name);
+mm_idx_t *mm_idx_gen_output(bseq_file_t *fp, int w, int k, int b, int tbatch_size, int n_threads, uint64_t ibatch_size, int keep_name, FILE* output_fp);
 void mm_idx_set_max_occ(mm_idx_t *mi, float f);
 const uint64_t *mm_idx_get(const mm_idx_t *mi, uint64_t minier, int *n);
 
@@ -91,6 +92,8 @@ const mm_reg1_t *mm_map(const mm_idx_t *mi, int l_seq, const char *seq, int *n_r
 int mm_map_file_pointer(const mm_idx_t *idx, FILE* sample_fp, const mm_mapopt_t *opt, int n_threads, int tbatch_size);
 
 int mm_map_file(const mm_idx_t *idx, const char *fn, const mm_mapopt_t *opt, int n_threads, int tbatch_size);
+
+int mm_map_file_output(const mm_idx_t *idx, const char *fn, const mm_mapopt_t *opt, int n_threads, int tbatch_size, FILE* output_fp);
 
 // private functions (may be moved to a "mmpriv.h" in future)
 double cputime(void);

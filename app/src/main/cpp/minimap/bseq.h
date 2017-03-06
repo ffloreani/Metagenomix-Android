@@ -11,13 +11,9 @@ typedef struct {
     char *name, *seq;
 } bseq1_t;
 
-bseq_file_t * bseq_file_open(FILE* database_fp);
-
 bseq_file_t * bseq_open(const char *fn);
 
 void bseq_close(bseq_file_t *fp);
-
-void bseq_file_close(bseq_file_t *fp);
 
 bseq1_t *bseq_read(bseq_file_t *fp, int chunk_size, int *n_);
 
